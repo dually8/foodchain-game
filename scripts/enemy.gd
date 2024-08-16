@@ -5,7 +5,7 @@ var attack_distance: int = 20
 var chase_distance: int = 400
 var move_speed: int = 100
 var attack_rate: float = 1.0
-var attack_damage: int = 1
+var attack_damage: int = 100
 
 @onready var timer: Timer = %Timer
 
