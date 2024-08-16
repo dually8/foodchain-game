@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://rsdkdhw8vo4x"]
+
+[ext_resource type="Texture2D" uid="uid://dfqy2yd0vuikg" path="res://icon.svg" id="1_8sb8y"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_iiyhn"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iiyhn")
+
+[node name="LogoContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 324.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="LogoContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LogoContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_8sb8y")
+stretch_mode = 5
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -324.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ButtonContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="ButtonContainer/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Exit")
+text = "Start"
+
+[node name="Settings" type="Button" parent="ButtonContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Start")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="ButtonContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Settings")
+text = "Exit"
+
+[node name="VersionContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -501.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VersionContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VersionLabel" type="Label" parent="VersionContainer/MarginContainer"]
+layout_mode = 2
+text = "Version 0.0.0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="ButtonContainer/HBoxContainer/GridContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonContainer/HBoxContainer/GridContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonContainer/HBoxContainer/GridContainer/Exit" to="." method="_on_exit_pressed"]
