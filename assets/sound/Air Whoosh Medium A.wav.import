@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://itiq2lsfvhxo"
+path="res://.godot/imported/Air Whoosh Medium A.wav-4cea544b16a564e7352b257e0ce524ae.sample"
+
+[deps]
+
+source_file="res://assets/sound/Air Whoosh Medium A.wav"
+dest_files=["res://.godot/imported/Air Whoosh Medium A.wav-4cea544b16a564e7352b257e0ce524ae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

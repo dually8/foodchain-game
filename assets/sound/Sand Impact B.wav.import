@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3cs7dw4xm3hs"
+path="res://.godot/imported/Sand Impact B.wav-58f38f806a9ec6294d7384847f1fe96f.sample"
+
+[deps]
+
+source_file="res://assets/sound/Sand Impact B.wav"
+dest_files=["res://.godot/imported/Sand Impact B.wav-58f38f806a9ec6294d7384847f1fe96f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
