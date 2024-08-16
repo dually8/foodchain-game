@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://calck2v7nv6qb"]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_kgdbr"]
+[ext_resource type="SpriteFrames" uid="uid://chhqhrthecp0i" path="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.aseprite" id="2_1k4vy"]
+[ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="3_x761q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu27i"]
+size = Vector2(16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m8k7"]
+atlas = ExtResource("3_x761q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t0th"]
+atlas = ExtResource("3_x761q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajby5"]
+atlas = ExtResource("3_x761q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gboby"]
+atlas = ExtResource("3_x761q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a57mx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m8k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t0th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajby5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gboby")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(184, 176)
+script = ExtResource("1_kgdbr")
+
+[node name="Skunk" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_1k4vy")
+autoplay = "default"
+frame_progress = 0.912695
+
+[node name="SkunkCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_nu27i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Wolf" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_a57mx")

@@ -1,0 +1,18 @@
+[remap]
+
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
+uid="uid://chhqhrthecp0i"
+path="res://.godot/imported/StinkySkunkIdleSide.aseprite-8fd429a6b496a137606e84f2bd7a6602.res"
+
+[deps]
+
+source_file="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.aseprite"
+dest_files=["res://.godot/imported/StinkySkunkIdleSide.aseprite-8fd429a6b496a137606e84f2bd7a6602.res"]
+
+[params]
+
+split_layers=false
+exclude_layers_pattern=""
+only_visible_layers=false
+sheet_type="Packed"
