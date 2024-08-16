@@ -10,9 +10,7 @@ func _ready() -> void:
 
 
 func _on_start_pressed() -> void:
-	#SceneManager.change_scene("/path/to/first_level")
-	pass # Replace with function body.
-
+	SceneManager.change_scene("res://scenes/level_01.tscn")
 
 func _on_settings_pressed() -> void:
 	Globals.open_settings_menu()

@@ -54,3 +54,6 @@ autoplay = "wolf"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_jord3")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true

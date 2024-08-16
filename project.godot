@@ -26,6 +26,7 @@ Globals="*res://global/globals.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 AudioManager="*res://global/audio_manager.gd"
+GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
