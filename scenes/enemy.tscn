@@ -39,8 +39,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jord3"]
-size = Vector2(16, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejjmr"]
+radius = 4.0
+height = 16.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(304, 128)
@@ -53,7 +54,14 @@ autoplay = "wolf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_jord3")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ejjmr")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 1.0
+target_desired_distance = 1.0
+path_max_distance = 10.0

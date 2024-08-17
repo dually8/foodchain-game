@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dc1pymvhu6qrh"]
+[gd_scene load_steps=21 format=4 uid="uid://dc1pymvhu6qrh"]
 
 [ext_resource type="Texture2D" uid="uid://co67i4mpct82g" path="res://assets/imgs/cute fantasy/Tiles/Cliff_Tile.png" id="1_ygy4b"]
 [ext_resource type="Texture2D" uid="uid://cnp0s4bx6cojd" path="res://assets/imgs/cute fantasy/Tiles/FarmLand_Tile.png" id="2_x0v7g"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://calck2v7nv6qb" path="res://scenes/player/player.tscn" id="8_n8bc8"]
 [ext_resource type="PackedScene" uid="uid://cek8i3hfv31q" path="res://scenes/enemy_spawner.tscn" id="9_5w70a"]
 [ext_resource type="PackedScene" uid="uid://dr8so52kl8grt" path="res://scenes/enemy.tscn" id="10_kkevy"]
+[ext_resource type="PackedScene" uid="uid://bppmh0eosky2l" path="res://scenes/prey.tscn" id="11_q671a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olsvq"]
 texture = ExtResource("1_ygy4b")
@@ -110,6 +111,11 @@ sources/4 = SubResource("TileSetAtlasSource_fruwx")
 sources/5 = SubResource("TileSetAtlasSource_8bq48")
 sources/6 = SubResource("TileSetAtlasSource_lj73f")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l5hc2"]
+vertices = PackedVector2Array(546, 174, 494, 174, 130, 114, 130, 62, 546, 226, 702, 18, 702, 478, 18, 18, 18, 478, 494, 226, 306, 226, 254, 226, 306, 174, 254, 174, 78, 62, 78, 114)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 5, 6), PackedInt32Array(7, 5, 0, 3), PackedInt32Array(4, 6, 8, 9), PackedInt32Array(9, 8, 10, 1), PackedInt32Array(11, 10, 8), PackedInt32Array(1, 10, 12), PackedInt32Array(2, 1, 12), PackedInt32Array(2, 12, 13), PackedInt32Array(7, 3, 14), PackedInt32Array(8, 7, 14, 15), PackedInt32Array(11, 8, 15, 2, 13)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(8, 8, 8, 488, 712, 488, 712, 8), PackedVector2Array(88, 72, 120, 72, 120, 104, 88, 104), PackedVector2Array(264, 184, 296, 184, 296, 216, 264, 216), PackedVector2Array(504, 184, 536, 184, 536, 216, 504, 216), PackedVector2Array(464, 64, 464, 112, 512, 112, 512, 64)])
+
 [node name="Level01" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -123,3 +129,10 @@ visible = false
 position = Vector2(496, 264)
 
 [node name="Enemy" parent="." instance=ExtResource("10_kkevy")]
+
+[node name="Prey" parent="." instance=ExtResource("11_q671a")]
+position = Vector2(80, 240)
+is_static = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_l5hc2")

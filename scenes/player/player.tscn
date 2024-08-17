@@ -4,8 +4,9 @@
 [ext_resource type="SpriteFrames" uid="uid://chhqhrthecp0i" path="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.aseprite" id="2_1k4vy"]
 [ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="3_x761q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu27i"]
-size = Vector2(16, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pf8m"]
+radius = 4.0
+height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m8k7"]
 atlas = ExtResource("3_x761q")
@@ -54,7 +55,8 @@ frame_progress = 0.912695
 
 [node name="SkunkCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_nu27i")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2pf8m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

@@ -7,7 +7,7 @@ var hp: int = 3
 
 func _ready() -> void:
 	print("let's gooooo")
-	add_to_group("Prey")
+	add_to_group("Player")
 	GameManager.player_take_damage.connect(_on_player_take_damage)
 
 func _physics_process(delta: float) -> void:
