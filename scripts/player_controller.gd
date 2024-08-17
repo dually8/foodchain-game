@@ -32,7 +32,7 @@ func _on_player_take_damage(damage: int) -> void:
 	if hp <= 0:
 		print("ded lol")
 
-func _hunger_damage():
+func _hunger_damage() -> void:
 	while hunger > 0:
 		hunger -= hunger_drain
 		print(hunger)
