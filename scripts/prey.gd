@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Prey
 
 @export var is_static: bool = false
 
@@ -7,6 +8,7 @@ extends CharacterBody2D
 var target: Player = null
 var run_distance: int = 400
 var move_speed: int = 75
+var hp: int = 3
 
 func _ready() -> void:
 	add_to_group("Prey")
@@ -29,3 +31,13 @@ func _physics_process(_delta: float) -> void:
 			var direction = (target.position - position).normalized() * -1
 			velocity = direction * move_speed
 			move_and_slide()
+
+func is_eaten() -> bool:
+	if hp > 0:
+		hp -= 1
+		return false
+	call_deferred("destroy")
+	return true
+
+func destroy() -> void:
+	queue_free()

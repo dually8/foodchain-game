@@ -3,6 +3,14 @@ extends Node
 var settings_menu_scene: PackedScene = preload("res://ui/menus/settings_menu.tscn")
 var settings_menu: SettingsMenu = null
 
+enum Foodchain {
+	Carrot,
+	Skunk,
+	Wolf,
+	Bear,
+	Human
+}
+
 func open_settings_menu():
 	if not settings_menu:
 		settings_menu = settings_menu_scene.instantiate()

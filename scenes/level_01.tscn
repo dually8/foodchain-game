@@ -133,9 +133,14 @@ tile_set = SubResource("TileSet_7d7dg")
 visible = false
 position = Vector2(496, 264)
 
+[node name="PreySpawner" parent="." instance=ExtResource("9_5w70a")]
+visible = false
+position = Vector2(496, 264)
+
 [node name="Enemy" parent="." instance=ExtResource("10_kkevy")]
 
 [node name="Prey" parent="." instance=ExtResource("11_q671a")]
+visible = false
 position = Vector2(80, 240)
 is_static = true
 
