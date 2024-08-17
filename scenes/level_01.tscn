@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://dc1pymvhu6qrh"]
+[gd_scene load_steps=67 format=4 uid="uid://dc1pymvhu6qrh"]
 
 [ext_resource type="PackedScene" uid="uid://c3dhqlt43oqlx" path="res://scenes/ui.tscn" id="1_61lsc"]
 [ext_resource type="Texture2D" uid="uid://co67i4mpct82g" path="res://assets/imgs/cute fantasy/Tiles/Cliff_Tile.png" id="1_ygy4b"]
@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dr8so52kl8grt" path="res://scenes/enemy.tscn" id="10_kkevy"]
 [ext_resource type="PackedScene" uid="uid://bppmh0eosky2l" path="res://scenes/prey.tscn" id="11_q671a"]
 [ext_resource type="AudioStream" uid="uid://bfy2h1lqlu1fm" path="res://assets/music/Synthwave Blue Sunset Intensity 2.wav" id="13_kwfen"]
+[ext_resource type="PackedScene" uid="uid://dd4naiteh37db" path="res://assets/Sprites/cat_tails.tscn" id="14_685fd"]
+[ext_resource type="PackedScene" uid="uid://ddx28nr2tlb43" path="res://assets/Sprites/flower.tscn" id="15_cttws"]
+[ext_resource type="PackedScene" uid="uid://b0fve7endlxfk" path="res://assets/Sprites/log.tscn" id="16_l14o6"]
+[ext_resource type="PackedScene" uid="uid://biv53nmvqrfr3" path="res://assets/Sprites/mushroom.tscn" id="17_1ewww"]
+[ext_resource type="PackedScene" uid="uid://cc1wjf5x7uvj4" path="res://assets/Sprites/stump.tscn" id="18_dtrym"]
+[ext_resource type="PackedScene" uid="uid://c6xhrv0me1hau" path="res://assets/Sprites/tree.tscn" id="19_s7syn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q2fw7"]
 vertices = PackedVector2Array(3.5, 1.875, 0.625, 8, -8, 8, -8, -8, 8, -8, 8, 0.75)
@@ -446,3 +452,144 @@ spawn_group = "Prey"
 position = Vector2(544, 368)
 pp_scene = ExtResource("11_q671a")
 spawn_group = "Prey"
+
+[node name="Cat Tails" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(520, 87)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails2" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(456, 76)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails3" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(489, 120)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(418, 206)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower2" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(475, 287)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower3" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(357.866, 381.053)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower4" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(115.976, 294.062)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower5" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(149.088, 167.785)
+scale = Vector2(0.5, 0.5)
+
+[node name="Flower6" parent="." instance=ExtResource("15_cttws")]
+position = Vector2(613.952, 199.12)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(304, 86)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log2" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(224, 153)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log3" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(224, 79)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log4" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(467, 381)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log5" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(587, 286)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log6" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(171, 420)
+scale = Vector2(0.5, 0.5)
+
+[node name="Log7" parent="." instance=ExtResource("16_l14o6")]
+position = Vector2(426, 455)
+scale = Vector2(0.5, 0.5)
+
+[node name="Mushroom" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(351, 268)
+
+[node name="Mushroom2" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(374, 141)
+
+[node name="Mushroom3" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(68, 224)
+
+[node name="Mushroom4" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(521, 271)
+
+[node name="Mushroom5" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(592, 112)
+
+[node name="Mushroom6" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(597, 450)
+
+[node name="Mushroom7" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(255, 403)
+
+[node name="Mushroom8" parent="." instance=ExtResource("17_1ewww")]
+position = Vector2(52, 324)
+
+[node name="Stump" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(348, 326)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stump2" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(348, 449)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stump3" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(531, 323)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stump4" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(166, 332)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stump5" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(371, 83)
+scale = Vector2(0.5, 0.5)
+
+[node name="Stump6" parent="." instance=ExtResource("18_dtrym")]
+position = Vector2(638, 143)
+scale = Vector2(0.5, 0.5)
+
+[node name="Tree" parent="." instance=ExtResource("19_s7syn")]
+position = Vector2(559, 52)
+
+[node name="Tree2" parent="." instance=ExtResource("19_s7syn")]
+position = Vector2(678, 358)
+
+[node name="Tree3" parent="." instance=ExtResource("19_s7syn")]
+position = Vector2(272, 54)
+
+[node name="Cat Tails4" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(487, 201)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails5" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(522, 170)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails6" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(311, 198)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails7" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(251, 195)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cat Tails8" parent="." instance=ExtResource("14_685fd")]
+position = Vector2(134, 84)
+scale = Vector2(0.5, 0.5)

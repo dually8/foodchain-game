@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://biv53nmvqrfr3"]
+
+[ext_resource type="Texture2D" uid="uid://bs665bitysh4n" path="res://assets/imgs/NatureTiles.png" id="1_fn8v6"]
+
+[node name="Mushroom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fn8v6")
+region_enabled = true
+region_rect = Rect2(109, 213, 22, 17)

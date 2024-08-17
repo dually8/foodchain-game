@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0fve7endlxfk"]
+
+[ext_resource type="Texture2D" uid="uid://bs665bitysh4n" path="res://assets/imgs/NatureTiles.png" id="1_7fpje"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bcpg"]
+radius = 8.0
+height = 46.0
+
+[node name="Log" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7fpje")
+region_enabled = true
+region_rect = Rect2(50, 209, 45, 21)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3bcpg")
