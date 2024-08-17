@@ -4,6 +4,7 @@ class_name Prey
 @export var is_static: bool = false
 
 @onready var navAgent: NavigationAgent2D = %NavigationAgent2D
+@onready var animation: AnimatedSprite2D = $Animation
 
 var target: Player = null
 var run_distance: int = 400
@@ -18,6 +19,21 @@ func _ready() -> void:
 		target = players[0] as Player
 	if target:
 		print("found player!")
+		_set_model()
+
+func _set_model() -> void:
+	if target:
+		match target.current_model:
+			Globals.Foodchain.Skunk:
+				animation.play("carrot")
+			Globals.Foodchain.Wolf:
+				animation.play("skunk")
+			Globals.Foodchain.Bear:
+				animation.play("wolf")
+			Globals.Foodchain.Human:
+				animation.play("bear")
+			_:
+				return
 
 func _physics_process(_delta: float) -> void:
 	#if target and not is_static and not navAgent.is_navigation_finished():

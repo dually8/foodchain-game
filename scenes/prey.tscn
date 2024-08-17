@@ -1,22 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bppmh0eosky2l"]
+[gd_scene load_steps=5 format=3 uid="uid://bppmh0eosky2l"]
 
-[ext_resource type="Texture2D" uid="uid://saceei6akdg7" path="res://assets/imgs/cute fantasy/Outdoor decoration/Outdoor_Decor_Free.png" id="1_11uyu"]
 [ext_resource type="Script" path="res://scripts/prey.gd" id="1_g686j"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgyuo"]
-atlas = ExtResource("1_11uyu")
-region = Rect2(64, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jqswi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgyuo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://2qxs1mytv3pm" path="res://scenes/shared_animation.tscn" id="3_sor2h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7twh"]
 radius = 4.0
@@ -28,9 +13,9 @@ radius = 16.0
 [node name="Prey" type="CharacterBody2D"]
 script = ExtResource("1_g686j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_jqswi")
-autoplay = "default"
+[node name="Animation" parent="." instance=ExtResource("3_sor2h")]
+animation = &"carrot"
+autoplay = "carrot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
