@@ -1,8 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://calck2v7nv6qb"]
+[gd_scene load_steps=16 format=3 uid="uid://calck2v7nv6qb"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_kgdbr"]
 [ext_resource type="SpriteFrames" uid="uid://chhqhrthecp0i" path="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.aseprite" id="2_1k4vy"]
 [ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="3_x761q"]
+[ext_resource type="AudioStream" uid="uid://cdqgorcvasbmg" path="res://assets/sound/Sand Impact A.wav" id="4_yipfa"]
+[ext_resource type="AudioStream" uid="uid://d3cs7dw4xm3hs" path="res://assets/sound/Sand Impact B.wav" id="5_v5b72"]
+[ext_resource type="AudioStream" uid="uid://e4mnaciiucb3" path="res://assets/sound/Sand Impact C.wav" id="6_5hr7u"]
+[ext_resource type="AudioStream" uid="uid://c6wx3qhyl5i41" path="res://assets/sound/Sand Impact D.wav" id="7_pu23p"]
+[ext_resource type="AudioStream" uid="uid://b23gb0m87glnv" path="res://assets/sound/Sand Impact E.wav" id="8_44xta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pf8m"]
 radius = 4.0
@@ -44,6 +49,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ath2v"]
+streams_count = 5
+stream_0/stream = ExtResource("4_yipfa")
+stream_1/stream = ExtResource("5_v5b72")
+stream_2/stream = ExtResource("6_5hr7u")
+stream_3/stream = ExtResource("7_pu23p")
+stream_4/stream = ExtResource("8_44xta")
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(184, 176)
 script = ExtResource("1_kgdbr")
@@ -70,3 +83,7 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_a57mx")
 
 [node name="HungerTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ath2v")
+bus = &"SFX"
