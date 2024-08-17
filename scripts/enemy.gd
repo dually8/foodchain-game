@@ -20,14 +20,11 @@ func _ready() -> void:
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		target = players[0] as Player
-	if target:
-		print("found player!")
 	call_deferred("_nav_setup")
 
 func _nav_setup() -> void:
 	await get_tree().physics_frame
 	ready_to_chase = true
-	print("ready to chase!")
 
 func _physics_process(_delta: float) -> void:
 	if target and ready_to_chase:
@@ -45,8 +42,6 @@ func _physics_process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	if target:
 		var distance_to_player = position.distance_to(target.position)
-		#print("Distance to player: " + str(distance_to_player))
 		if distance_to_player <= attack_distance:
-			print("attack the player!")
-			GameManager.player_take_damage.emit(attack_damage)
+			GameManager.player_adjust_hp.emit(target.hp - attack_damage)
 			# TODO: Wait after attack. Don't move for a sec

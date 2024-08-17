@@ -7,7 +7,7 @@ class_name UI
 var player: Player
 
 func _ready():
-	GameManager.player_take_damage.connect(update_hp)
+	GameManager.player_adjust_hp.connect(update_hp)
 	GameManager.player_adjust_hunger.connect(update_hunger)
 	update_hp(0)
 	update_hunger(0)
@@ -25,13 +25,11 @@ func check_player() -> bool:
 func update_hunger(value: int) -> void:
 	if not check_player():
 		return
-	print("UI update hunger: " + str(value) + "\tPlayer hunger: " + str(player.hunger))
 	if player.hunger > 0:
 		var new_val = 100.0 / float(player.max_hunger) * float(player.hunger)
 		hunger_meter.value = new_val
 	elif player.hunger <= 0:
 		hunger_meter.value = 0.0
-	print("UI hunger meter: " + str(hunger_meter.value))
 
 func update_hp(_damage: int) -> void:
 	if not check_player():

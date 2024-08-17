@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bppmh0eosky2l"]
+[gd_scene load_steps=7 format=3 uid="uid://bppmh0eosky2l"]
 
 [ext_resource type="Texture2D" uid="uid://saceei6akdg7" path="res://assets/imgs/cute fantasy/Outdoor decoration/Outdoor_Decor_Free.png" id="1_11uyu"]
 [ext_resource type="Script" path="res://scripts/prey.gd" id="1_g686j"]
@@ -22,6 +22,9 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vpv0"]
+radius = 16.0
+
 [node name="Prey" type="CharacterBody2D"]
 script = ExtResource("1_g686j")
 
@@ -38,3 +41,9 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8vpv0")
+debug_color = Color(0.78764, 0.378883, 0.544974, 0.42)
