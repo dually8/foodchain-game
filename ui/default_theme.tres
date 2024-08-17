@@ -1,7 +1,110 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjpa4v7k8pwke"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cjpa4v7k8pwke"]
 
-[sub_resource type="SystemFont" id="SystemFont_vfutk"]
+[ext_resource type="FontFile" uid="uid://dw5i772nbxfac" path="res://assets/imgs/Bars N Boxes/Big Boy.ttf" id="1_uddy0"]
+[ext_resource type="FontFile" uid="uid://dtdoxmicfybi6" path="res://assets/imgs/Bars N Boxes/Boxed In.ttf" id="2_rhroi"]
+[ext_resource type="Texture2D" uid="uid://babxo4rsbnk6b" path="res://assets/imgs/Bars N Boxes/background 3.png" id="3_2108n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mclwf"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_2108n")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(784, 59, 80, 21)
+modulate_color = Color(0.329216, 0.787523, 0.882459, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_py1vo"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_2108n")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(784, 59, 80, 21)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f3ufb"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_2108n")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(783, 378, 82, 23)
+modulate_color = Color(0.255244, 0.698201, 0.461173, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53bs2"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+texture = ExtResource("3_2108n")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(559, 431, 66, 50)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmj1w"]
+texture = ExtResource("3_2108n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xr8eh"]
+content_margin_left = 6.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+texture = ExtResource("3_2108n")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(559, 566, 98, 66)
 
 [resource]
 default_font_size = 0
-Button/fonts/font = SubResource("SystemFont_vfutk")
+Button/constants/outline_size = 1
+Button/font_sizes/font_size = 28
+Button/fonts/font = ExtResource("1_uddy0")
+Button/styles/hover = SubResource("StyleBoxTexture_mclwf")
+Button/styles/normal = SubResource("StyleBoxTexture_py1vo")
+Button/styles/pressed = SubResource("StyleBoxTexture_f3ufb")
+Label/font_sizes/font_size = 28
+Label/fonts/font = ExtResource("1_uddy0")
+LineEdit/font_sizes/font_size = 28
+LineEdit/fonts/font = ExtResource("1_uddy0")
+TabBar/font_sizes/font_size = 16
+TabBar/fonts/font = ExtResource("2_rhroi")
+TextEdit/colors/font_color = Color(1, 1, 1, 1)
+TextEdit/constants/line_spacing = 10
+TextEdit/constants/outline_size = 1
+TextEdit/font_sizes/font_size = 15
+TextEdit/fonts/font = ExtResource("2_rhroi")
+TextEdit/styles/normal = SubResource("StyleBoxTexture_53bs2")
+Tree/colors/font_color = Color(1, 1, 1, 1)
+Tree/constants/button_margin = 4
+Tree/constants/children_hl_line_width = 0
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/h_separation = 4
+Tree/constants/icon_max_width = 0
+Tree/constants/inner_item_margin_bottom = 0
+Tree/constants/inner_item_margin_left = 0
+Tree/constants/inner_item_margin_right = 0
+Tree/constants/inner_item_margin_top = 0
+Tree/constants/item_margin = 17
+Tree/constants/outline_size = 1
+Tree/constants/v_separation = 3
+Tree/font_sizes/font_size = 16
+Tree/fonts/font = ExtResource("2_rhroi")
+Tree/fonts/title_button_font = ExtResource("2_rhroi")
+Tree/styles/button_pressed = SubResource("StyleBoxTexture_xmj1w")
+Tree/styles/panel = SubResource("StyleBoxTexture_xr8eh")
