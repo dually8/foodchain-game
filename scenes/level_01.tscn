@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfa8bn0t374wv" path="res://assets/imgs/cute fantasy/Tiles/Water_Middle.png" id="6_tlwir"]
 [ext_resource type="Texture2D" uid="uid://d0nil33tyayjr" path="res://assets/imgs/cute fantasy/Tiles/Water_Tile.png" id="7_0ene2"]
 [ext_resource type="PackedScene" uid="uid://calck2v7nv6qb" path="res://scenes/player/player.tscn" id="8_n8bc8"]
-[ext_resource type="PackedScene" uid="uid://cek8i3hfv31q" path="res://scenes/enemy_spawner.tscn" id="9_5w70a"]
+[ext_resource type="PackedScene" uid="uid://cek8i3hfv31q" path="res://scenes/spawner.tscn" id="9_5w70a"]
 [ext_resource type="PackedScene" uid="uid://dr8so52kl8grt" path="res://scenes/enemy.tscn" id="10_kkevy"]
 [ext_resource type="PackedScene" uid="uid://bppmh0eosky2l" path="res://scenes/prey.tscn" id="11_q671a"]
 [ext_resource type="AudioStream" uid="uid://bfy2h1lqlu1fm" path="res://assets/music/Synthwave Blue Sunset Intensity 2.wav" id="13_kwfen"]
@@ -129,20 +129,22 @@ tile_map_data = PackedByteArray("AAAAAAAABgAAAAMAAAAAAAEABgACAAEAAAAAAAIABgACAAE
 tile_set = SubResource("TileSet_7d7dg")
 
 [node name="Player" parent="." instance=ExtResource("8_n8bc8")]
+position = Vector2(224, 232)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("9_5w70a")]
-visible = false
-position = Vector2(496, 264)
+position = Vector2(640, 61)
+pp_scene = ExtResource("10_kkevy")
 
 [node name="PreySpawner" parent="." instance=ExtResource("9_5w70a")]
-visible = false
-position = Vector2(496, 264)
+position = Vector2(64, 448)
+pp_scene = ExtResource("11_q671a")
+spawn_group = "Prey"
 
 [node name="Enemy" parent="." instance=ExtResource("10_kkevy")]
+position = Vector2(272, 120)
 
 [node name="Prey" parent="." instance=ExtResource("11_q671a")]
-visible = false
-position = Vector2(80, 240)
+position = Vector2(88, 352)
 is_static = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

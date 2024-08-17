@@ -44,7 +44,6 @@ radius = 4.0
 height = 16.0
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(304, 128)
 script = ExtResource("1_dchky")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

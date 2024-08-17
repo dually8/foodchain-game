@@ -452,7 +452,6 @@ stream_3/stream = ExtResource("10_pmxlu")
 stream_4/stream = ExtResource("11_bkqli")
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(184, 176)
 script = ExtResource("1_kgdbr")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
