@@ -6,6 +6,7 @@ class_name Player
 @onready var area2d: Area2D = $Area2D
 @onready var sprite: AnimatedSprite2D = $Animation
 @onready var collision: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var footsteps: AudioStreamPlayer = $Footsteps
 
 var attack_damage: int = 100
 var hp: int = 300
@@ -15,6 +16,8 @@ var max_hunger: int = 500
 var hunger_drain: int = 50
 var available_prey: Array[Prey] = []
 var current_model: Globals.Foodchain = Globals.Foodchain.Skunk
+const footstep_interval: float = 0.5
+var footstep_timer: float = 0.0
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -28,9 +31,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(0, 0)
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	footstep_timer -= delta
 	if direction != Vector2(0, 0):
 		velocity = direction.normalized() * move_speed
+		_play_footsteps()
 	move_and_slide()
+
+func _play_footsteps() -> void:
+	if footstep_timer <= 0.0:
+		footsteps.play()
+		footstep_timer = footstep_interval
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
