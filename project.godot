@@ -43,6 +43,8 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 Prey="Something that can get eaten by a predator"
 Predator="Something that can eat a prey"
 Player="The player character"
+PredatorSpawnPoint="Point from which to spawn predators"
+PreySpawnPoint="Point from which to spawn prey"
 
 [input]
 

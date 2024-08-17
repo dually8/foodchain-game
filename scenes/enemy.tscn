@@ -1,54 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr8so52kl8grt"]
+[gd_scene load_steps=4 format=3 uid="uid://dr8so52kl8grt"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dchky"]
-[ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="1_miyy6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_riu77"]
-atlas = ExtResource("1_miyy6")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwhx5"]
-atlas = ExtResource("1_miyy6")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qb8n5"]
-atlas = ExtResource("1_miyy6")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8u4ac"]
-atlas = ExtResource("1_miyy6")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dl06o"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_riu77")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cwhx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qb8n5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8u4ac")
-}],
-"loop": true,
-"name": &"wolf",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://2qxs1mytv3pm" path="res://scenes/shared_animation.tscn" id="2_e3rvq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejjmr"]
 radius = 4.0
 height = 16.0
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(304, 128)
 script = ExtResource("1_dchky")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_dl06o")
+[node name="Animation" parent="." instance=ExtResource("2_e3rvq")]
 animation = &"wolf"
 autoplay = "wolf"
 
@@ -65,3 +27,5 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 10.0
+
+[node name="AttackCooldown" type="Timer" parent="."]

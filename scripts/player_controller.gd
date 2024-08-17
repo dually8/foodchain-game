@@ -52,7 +52,7 @@ func _input(event: InputEvent) -> void:
 func try_attack() -> void:
 	if available_prey.size() > 0:
 		var first_prey = available_prey[0]
-		# TODO - Play chomp sound
+		AudioManager.play_chomp()
 		if first_prey.is_eaten():
 			_update_hunger(true)
 
@@ -78,8 +78,8 @@ func _update_hunger(did_eat: bool = false) -> void:
 	if hunger > 0:
 		hunger -= hunger_drain
 	else:
-		print("You starved")
 		# TODO - Show game over menu
+		return
 	GameManager.player_adjust_hunger.emit(hunger)
 
 func _on_body_entered(body: Node2D) -> void:
