@@ -84,6 +84,6 @@ sprite_frames = SubResource("SpriteFrames_a57mx")
 
 [node name="HungerTimer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ath2v")
 bus = &"SFX"
