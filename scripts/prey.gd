@@ -60,3 +60,7 @@ func is_eaten() -> bool:
 
 func destroy() -> void:
 	queue_free()
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity

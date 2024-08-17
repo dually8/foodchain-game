@@ -425,5 +425,4 @@ animations = [{
 
 [node name="Animation" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_a57mx")
-animation = &"human_idle_down"
-autoplay = "skunk"
+animation = &"skunk"

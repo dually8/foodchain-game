@@ -27,5 +27,8 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 10.0
+avoidance_enabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -26,9 +26,12 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 10.0
+avoidance_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8vpv0")
 debug_color = Color(0.78764, 0.378883, 0.544974, 0.42)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
