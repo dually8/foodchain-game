@@ -12,7 +12,7 @@ texture = ExtResource("1_2ymlv")
 region_enabled = true
 region_rect = Rect2(153, 259, 30, 26)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_7ae61")
