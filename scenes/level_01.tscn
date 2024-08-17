@@ -394,7 +394,6 @@ sources/6 = SubResource("TileSetAtlasSource_lj73f")
 [node name="Level01" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_61lsc")]
 
