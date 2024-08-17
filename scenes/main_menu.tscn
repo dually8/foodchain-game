@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rsdkdhw8vo4x"]
+[gd_scene load_steps=4 format=3 uid="uid://rsdkdhw8vo4x"]
 
 [ext_resource type="Texture2D" uid="uid://dfqy2yd0vuikg" path="res://icon.svg" id="1_8sb8y"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_iiyhn"]
+[ext_resource type="Theme" uid="uid://cjpa4v7k8pwke" path="res://ui/default_theme.tres" id="1_ponpi"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ponpi")
 script = ExtResource("1_iiyhn")
 
 [node name="LogoContainer" type="VBoxContainer" parent="."]

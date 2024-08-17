@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://05d610tqnml2"]
+[gd_scene load_steps=4 format=3 uid="uid://05d610tqnml2"]
 
 [ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_foif8"]
+[ext_resource type="Theme" uid="uid://cjpa4v7k8pwke" path="res://ui/default_theme.tres" id="2_0nsvm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcvp2"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0nsvm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dcvp2")
 
 [node name="MenuOverlay" type="Panel" parent="BackgroundOverlay"]
