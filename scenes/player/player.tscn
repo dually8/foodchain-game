@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://calck2v7nv6qb"]
+[gd_scene load_steps=70 format=3 uid="uid://calck2v7nv6qb"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_kgdbr"]
 [ext_resource type="Texture2D" uid="uid://cv1tyjasln5f0" path="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.png" id="2_ehjua"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://saceei6akdg7" path="res://assets/imgs/cute fantasy/Outdoor decoration/Outdoor_Decor_Free.png" id="3_c1ums"]
 [ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="3_x761q"]
 [ext_resource type="Texture2D" uid="uid://cl6ptruncpa5k" path="res://assets/imgs/cute fantasy/Player/Player.png" id="4_yiw2r"]
+[ext_resource type="AudioStream" uid="uid://cdqgorcvasbmg" path="res://assets/sound/Sand Impact A.wav" id="7_nic81"]
+[ext_resource type="AudioStream" uid="uid://d3cs7dw4xm3hs" path="res://assets/sound/Sand Impact B.wav" id="8_anhx5"]
+[ext_resource type="AudioStream" uid="uid://e4mnaciiucb3" path="res://assets/sound/Sand Impact C.wav" id="9_yf0k5"]
+[ext_resource type="AudioStream" uid="uid://c6wx3qhyl5i41" path="res://assets/sound/Sand Impact D.wav" id="10_pmxlu"]
+[ext_resource type="AudioStream" uid="uid://b23gb0m87glnv" path="res://assets/sound/Sand Impact E.wav" id="11_bkqli"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mixrc"]
 atlas = ExtResource("2_m83ne")
@@ -438,6 +443,14 @@ height = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ims5k"]
 radius = 14.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gargr"]
+streams_count = 5
+stream_0/stream = ExtResource("7_nic81")
+stream_1/stream = ExtResource("8_anhx5")
+stream_2/stream = ExtResource("9_yf0k5")
+stream_3/stream = ExtResource("10_pmxlu")
+stream_4/stream = ExtResource("11_bkqli")
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(184, 176)
 script = ExtResource("1_kgdbr")
@@ -479,3 +492,6 @@ drag_vertical_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ims5k")
 debug_color = Color(0.778542, 0.384272, 0.558789, 0.42)
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gargr")
