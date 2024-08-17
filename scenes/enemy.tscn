@@ -27,3 +27,5 @@ unique_name_in_owner = true
 path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 10.0
+
+[node name="AttackCooldown" type="Timer" parent="."]

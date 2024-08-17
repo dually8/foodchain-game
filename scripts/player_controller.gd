@@ -78,8 +78,8 @@ func _update_hunger(did_eat: bool = false) -> void:
 	if hunger > 0:
 		hunger -= hunger_drain
 	else:
-		print("You starved")
 		# TODO - Show game over menu
+		return
 	GameManager.player_adjust_hunger.emit(hunger)
 
 func _on_body_entered(body: Node2D) -> void:

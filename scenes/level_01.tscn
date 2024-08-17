@@ -140,13 +140,6 @@ position = Vector2(64, 448)
 pp_scene = ExtResource("11_q671a")
 spawn_group = "Prey"
 
-[node name="Enemy" parent="." instance=ExtResource("10_kkevy")]
-position = Vector2(272, 120)
-
-[node name="Prey" parent="." instance=ExtResource("11_q671a")]
-position = Vector2(88, 352)
-is_static = true
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_l5hc2")
 

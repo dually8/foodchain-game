@@ -32,8 +32,11 @@ func _set_model() -> void:
 				animation.play("wolf")
 			Globals.Foodchain.Human:
 				animation.play("bear")
-			_:
-				return
+		if target.current_model == Globals.Foodchain.Skunk:
+			# Carrots cannot move
+			is_static = true
+		else:
+			is_static = false
 
 func _physics_process(_delta: float) -> void:
 	#if target and not is_static and not navAgent.is_navigation_finished():
