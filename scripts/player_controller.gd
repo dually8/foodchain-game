@@ -4,6 +4,8 @@ class_name Player
 @export var move_speed: int = 250
 var attack_damage: int = 100
 var hp: int = 300
+var hunger: int = 500
+var hunger_drain: int = 50
 
 func _ready() -> void:
 	print("let's gooooo")
@@ -29,3 +31,8 @@ func _on_player_take_damage(damage: int) -> void:
 		print(hp)
 	if hp <= 0:
 		print("ded lol")
+
+func _hunger_damage():
+	while hunger > 0:
+		hunger -= hunger_drain
+		print(hunger)
