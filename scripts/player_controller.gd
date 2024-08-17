@@ -36,3 +36,5 @@ func _hunger_damage():
 	while hunger > 0:
 		hunger -= hunger_drain
 		print(hunger)
+	if hunger <= 0:
+		print("You starved")
