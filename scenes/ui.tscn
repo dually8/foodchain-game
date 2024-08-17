@@ -1,14 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3dhqlt43oqlx"]
 
-[ext_resource type="Script" path="res://scenes/health.gd" id="1_1mdkm"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_yt034"]
 
 [node name="UI" type="Control"]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yt034")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 0
@@ -18,25 +20,23 @@ text = "Health
 Hunger"
 
 [node name="Hunger" type="ProgressBar" parent="TextEdit"]
+unique_name_in_owner = true
 modulate = Color(0, 1, 1, 1)
+layout_mode = 0
 offset_left = 5.0
 offset_top = 55.0
 offset_right = 114.0
 offset_bottom = 64.0
-max_value = 500.0
-step = 100.0
-value = 500.0
+value = 100.0
 show_percentage = false
 
 [node name="Health" type="ProgressBar" parent="TextEdit"]
+unique_name_in_owner = true
 modulate = Color(0, 1, 0, 1)
 layout_mode = 0
 offset_left = 5.0
 offset_top = 27.0
 offset_right = 115.0
 offset_bottom = 36.0
-max_value = 500.0
-step = 100.0
-value = 500.0
+value = 100.0
 show_percentage = false
-script = ExtResource("1_1mdkm")

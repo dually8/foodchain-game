@@ -68,3 +68,5 @@ drag_vertical_enabled = true
 [node name="Wolf" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_a57mx")
+
+[node name="HungerTimer" type="Timer" parent="."]
