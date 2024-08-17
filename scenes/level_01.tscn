@@ -394,7 +394,6 @@ sources/6 = SubResource("TileSetAtlasSource_lj73f")
 [node name="Level01" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_61lsc")]
 
@@ -405,6 +404,7 @@ collision_visibility_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("8_n8bc8")]
 position = Vector2(224, 232)
+current_model = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_kwfen")

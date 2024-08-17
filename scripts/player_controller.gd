@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var move_speed: int = 250
+@export var current_model: Globals.Foodchain
 @onready var hunger_timer: Timer = $HungerTimer
 @onready var area2d: Area2D = $Area2D
 @onready var sprite: AnimatedSprite2D = $Animation
@@ -15,7 +16,6 @@ var hunger: int = 500
 var max_hunger: int = 500
 var hunger_drain: int = 50
 var available_prey: Array[Prey] = []
-var current_model: Globals.Foodchain = Globals.Foodchain.Skunk
 const footstep_interval: float = 0.5
 var footstep_timer: float = 0.0
 
@@ -27,6 +27,7 @@ func _ready() -> void:
 	hunger_timer.start()
 	area2d.body_entered.connect(_on_body_entered)
 	area2d.body_exited.connect(_on_body_exited)
+	set_model(current_model)
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(0, 0)
@@ -35,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector2(0, 0):
 		velocity = direction.normalized() * move_speed
 		_play_footsteps()
+	handle_animation()
 	move_and_slide()
 
 func _play_footsteps() -> void:
@@ -130,6 +132,20 @@ func set_model(model: Globals.Foodchain) -> void:
 
 func set_animation(animation_name: String) -> void:
 	sprite.play(animation_name)
+
+func handle_animation() -> void:
+	if velocity.x > 0:
+		sprite.flip_h = false
+	elif velocity.x < 0:
+		sprite.flip_h = true
+
+	if current_model == Globals.Foodchain.Human:
+		if velocity.x > 0 or velocity.x < 0:
+			set_animation("human_run_side")
+		if velocity.y > 0:
+			set_animation("human_run_down")
+		if velocity.y < 0:
+			set_animation("human_run_up")
 
 func set_area_radius() -> void:
 	match current_model:

@@ -69,3 +69,7 @@ func set_model() -> void:
 			animation.play("human_idle_down")
 		Globals.Foodchain.Human:
 			animation.play("bear")
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
