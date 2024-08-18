@@ -59,7 +59,14 @@ func _physics_process(_delta: float) -> void:
 			var new_velocity = direction * move_speed
 			if navAgent.avoidance_enabled:
 				navAgent.set_velocity(new_velocity)
+			_set_sprite_direction()
 			move_and_slide()
+
+func _set_sprite_direction() -> void:
+	if velocity.x > 0:
+		animation.flip_h = false
+	else:
+		animation.flip_h = true
 
 func is_eaten() -> bool:
 	if hp > 0:
