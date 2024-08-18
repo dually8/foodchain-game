@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _on_retry_button_pressed() -> void:
 	on_retry_game.emit()
+	GameManager._reset_score()
 	SceneManager.change_scene("res://scenes/level_01.tscn")
 
 
