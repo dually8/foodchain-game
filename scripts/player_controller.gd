@@ -82,6 +82,10 @@ func reset_stats() -> void:
 	GameManager.player_adjust_hp.emit(max_hp)
 
 func _update_hunger(did_eat: bool = false) -> void:
+	if current_model == Globals.Foodchain.Carrot:
+		# Don't deplete hunger if we're a carrot
+		# we have photosynthesis!
+		return
 	if did_eat:
 		hunger = max_hunger
 	if hunger > 0:

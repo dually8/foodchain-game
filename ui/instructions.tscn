@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://bir7v7ch88esi"]
+
+[ext_resource type="Theme" uid="uid://cjpa4v7k8pwke" path="res://ui/default_theme.tres" id="1_i30mi"]
+[ext_resource type="Texture2D" uid="uid://b5eexlkflihhy" path="res://assets/imgs/Bars N Boxes/background 2.png" id="2_tmpyn"]
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i30mi")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.784314)
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+texture = ExtResource("2_tmpyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CarrotInstructions" type="Label" parent="CenterContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "You are a carrot. You're enjoying a nice day in the sun, but out here, it's eat, or be eaten..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerInstructions" type="Label" parent="CenterContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "You've just been eaten by your predator! As the new apex predator, your goal is to fight off hunger while not getting eaten."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HumanInstructions" type="Label" parent="CenterContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "You are now the biggest and baddest predator of them all! But it looks like now, all of the things that you ate now want to eat you..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
