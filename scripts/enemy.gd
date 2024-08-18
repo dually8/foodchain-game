@@ -74,8 +74,15 @@ func set_model() -> void:
 		Globals.Foodchain.Bear:
 			animation.play("human_idle_down")
 		Globals.Foodchain.Human:
-			animation.play("bear")
+			var anim = get_random_animation()
+			animation.play(anim)
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
+
+func get_random_animation() -> String:
+	var rand_anim: Array[String] = ["bear", "wolf", "skunk"]
+	randomize()
+	var index = randi() % rand_anim.size()
+	return rand_anim[index]

@@ -114,9 +114,8 @@ func switch_to_next_predator() -> void:
 		Globals.Foodchain.Bear:
 			set_model(Globals.Foodchain.Human)
 		Globals.Foodchain.Human:
-			# TODO - End game
-			print("You're finally dead!")
-	# TODO - Remove all predators and prey
+			Globals.open_game_over()
+	# Remove all predators and prey
 	GameManager.reset_predators_and_prey()
 	# Let spawners spawn new ones
 

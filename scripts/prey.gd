@@ -30,18 +30,20 @@ func _set_model() -> void:
 		match target.current_model:
 			Globals.Foodchain.Skunk:
 				animation.play("carrot")
+				is_static = true
 			Globals.Foodchain.Wolf:
 				animation.play("skunk")
+				is_static = false
 			Globals.Foodchain.Bear:
 				animation.play("wolf")
+				is_static = false
 			Globals.Foodchain.Human:
-				animation.play("bear")
-		if target.current_model == Globals.Foodchain.Skunk:
+				animation.play("carrot")
+				is_static = true
+		if is_static:
 			# Carrots cannot move
-			is_static = true
 			navAgent.avoidance_enabled = false
 		else:
-			is_static = false
 			navAgent.avoidance_enabled = true
 
 func _physics_process(_delta: float) -> void:
