@@ -53,6 +53,7 @@ debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yooxs")
+bus = &"SFX"
 
 [node name="AttackRange" type="Area2D" parent="."]
 
