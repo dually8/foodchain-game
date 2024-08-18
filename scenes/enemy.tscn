@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr8so52kl8grt"]
+[gd_scene load_steps=11 format=3 uid="uid://dr8so52kl8grt"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dchky"]
 [ext_resource type="PackedScene" uid="uid://2qxs1mytv3pm" path="res://scenes/shared_animation.tscn" id="2_e3rvq"]
@@ -20,11 +20,13 @@ stream_2/stream = ExtResource("5_ob1wu")
 stream_3/stream = ExtResource("6_u5a38")
 stream_4/stream = ExtResource("7_sey1v")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdxjf"]
+radius = 20.0
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_dchky")
 
 [node name="Animation" parent="." instance=ExtResource("2_e3rvq")]
-animation = &"wolf"
 autoplay = "wolf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -53,4 +55,11 @@ debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yooxs")
 
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_kdxjf")
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

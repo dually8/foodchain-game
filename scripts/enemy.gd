@@ -7,15 +7,16 @@ var move_speed: int = 100
 var attack_rate: float = 1.0
 var attack_damage: int = 100
 var ready_to_chase: bool = false
-var is_paused: bool = false
 const footstep_interval: float = 0.5
 var footstep_timer: float = 0.0
+var can_attack: bool = false
 
 @onready var timer: Timer = %Timer
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var navAgent: NavigationAgent2D = %NavigationAgent2D
 @onready var animation: AnimatedSprite2D = $Animation
 @onready var footsteps: AudioStreamPlayer2D = $Footsteps
+@onready var attackRange: Area2D = $AttackRange
 
 func _ready() -> void:
 	add_to_group("Predator")
@@ -46,33 +47,25 @@ func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target):
 		return
 	footstep_timer -= delta
-	if target and ready_to_chase and not is_paused:
+	if target and ready_to_chase:
 		navAgent.target_position = target.position
 		var direction = global_position.direction_to(navAgent.get_next_path_position())
 		if direction != Vector2.ZERO:
 			_play_footsteps()
 		navAgent.set_velocity(direction * move_speed)
 		move_and_slide()
-	#if target:
-		#var distance_to_player = position.distance_to(target.position)
-		#if distance_to_player > attack_distance and distance_to_player < chase_distance:
-			#var direction = (target.position - position).normalized()
-			#velocity = direction * move_speed
-			#move_and_slide()
 
 func _on_timer_timeout() -> void:
 	# Fixes the crash when reloading the level
 	if not is_instance_valid(target):
 		return
-	if target and not is_paused:
-		var distance_to_player = position.distance_to(target.position)
-		if distance_to_player <= attack_distance:
-			GameManager.player_adjust_hp.emit(target.hp - attack_damage)
-			is_paused = true
-			attack_cooldown.start()
+	if target and can_attack:
+		GameManager.player_adjust_hp.emit(target.hp - attack_damage)
+		can_attack = false
+		attack_cooldown.start()
 
 func _on_cooldown() -> void:
-	is_paused = false
+	can_attack = true
 
 func set_model() -> void:
 	if not target:
@@ -87,6 +80,16 @@ func set_model() -> void:
 		Globals.Foodchain.Human:
 			var anim = get_random_animation()
 			animation.play(anim)
+	set_attack_range()
+
+func set_attack_range() -> void:
+	# 30px if bear, 20px for everything else
+	var collision = attackRange.get_child(0) as CollisionShape2D
+	var shape = collision.shape as CircleShape2D
+	if animation.animation == "bear":
+		shape.radius = 30.0
+	else:
+		shape.radius = 20.0
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
@@ -97,3 +100,13 @@ func get_random_animation() -> String:
 	randomize()
 	var index = randi() % rand_anim.size()
 	return rand_anim[index]
+
+
+func _on_attack_range_body_entered(body: Node2D) -> void:
+	if body is Player:
+		can_attack = true
+
+
+func _on_attack_range_body_exited(body: Node2D) -> void:
+	if body is Player:
+		can_attack = false
