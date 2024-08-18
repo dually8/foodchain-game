@@ -15,7 +15,7 @@ theme = ExtResource("1_cp48l")
 script = ExtResource("2_hj7py")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.784314)
+modulate = Color(1, 1, 1, 0.980392)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
