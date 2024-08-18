@@ -11,6 +11,7 @@ const footstep_interval: float = 0.5
 var footstep_timer: float = 0.0
 var is_in_range: bool = false
 var can_attack: bool = true
+var facing_direction: Globals.FacingDirection = Globals.FacingDirection.SOUTH
 
 @onready var attackTimer: Timer = $AttackTimer
 @onready var attack_cooldown: Timer = $AttackCooldown
@@ -54,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	if target and ready_to_chase:
 		navAgent.target_position = target.position
 		var direction = global_position.direction_to(navAgent.get_next_path_position())
+		_set_facing_direction(direction)
+		_set_sprite_dir()
 		if direction != Vector2.ZERO:
 			_play_footsteps()
 		navAgent.set_velocity(direction * move_speed)
@@ -82,11 +85,38 @@ func set_model() -> void:
 		Globals.Foodchain.Wolf:
 			animation.play("bear")
 		Globals.Foodchain.Bear:
-			animation.play("human_idle_down")
+			_set_human_model()
 		Globals.Foodchain.Human:
 			var anim = get_random_animation()
 			animation.play(anim)
 	set_attack_range()
+
+func _set_human_model() -> void:
+	if target and target.current_model == Globals.Foodchain.Bear:
+		match facing_direction:
+			Globals.FacingDirection.NORTH:
+				animation.play("human_run_up")
+			Globals.FacingDirection.SOUTH:
+				animation.play("human_run_down")
+			_:
+				animation.play("human_run_side")
+
+func _set_facing_direction(dir: Vector2) -> void:
+	if dir.x > 0:
+		facing_direction = Globals.FacingDirection.WEST
+	elif dir.x < 0:
+		facing_direction = Globals.FacingDirection.EAST
+	elif dir.y > 0:
+		facing_direction = Globals.FacingDirection.SOUTH
+	elif dir.y < 0:
+		facing_direction = Globals.FacingDirection.NORTH
+
+func _set_sprite_dir() -> void:
+	if facing_direction == Globals.FacingDirection.EAST:
+		animation.flip_h = true
+	else:
+		animation.flip_h = false
+	_set_human_model()
 
 func set_attack_range() -> void:
 	# 30px if bear, 20px for everything else
