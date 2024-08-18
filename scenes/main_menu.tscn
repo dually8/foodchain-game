@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://rsdkdhw8vo4x"]
+[gd_scene load_steps=13 format=3 uid="uid://rsdkdhw8vo4x"]
 
-[ext_resource type="Texture2D" uid="uid://dfqy2yd0vuikg" path="res://icon.svg" id="1_8sb8y"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_iiyhn"]
 [ext_resource type="Theme" uid="uid://cjpa4v7k8pwke" path="res://ui/default_theme.tres" id="1_ponpi"]
 [ext_resource type="Texture2D" uid="uid://cl6ptruncpa5k" path="res://assets/imgs/cute fantasy/Player/Player.png" id="4_ag5we"]
@@ -23,24 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ponpi")
 script = ExtResource("1_iiyhn")
-
-[node name="LogoContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = -1111.0
-offset_bottom = 152.0
-grow_horizontal = 2
-alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="LogoContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TextureRect" type="TextureRect" parent="LogoContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_8sb8y")
-stretch_mode = 5
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -110,7 +91,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VersionLabel" type="Label" parent="VersionContainer/MarginContainer"]
 layout_mode = 2
-text = "Version 0.0.0"
+text = "Version 0.1.0"
 horizontal_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="."]

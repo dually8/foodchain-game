@@ -39,8 +39,10 @@ func _set_model() -> void:
 		if target.current_model == Globals.Foodchain.Skunk:
 			# Carrots cannot move
 			is_static = true
+			navAgent.avoidance_enabled = false
 		else:
 			is_static = false
+			navAgent.avoidance_enabled = true
 
 func _physics_process(_delta: float) -> void:
 	# Fixes the crash when reloading the level
@@ -54,8 +56,9 @@ func _physics_process(_delta: float) -> void:
 				navAgent.get_next_path_position()
 			)
 			var new_velocity = direction * move_speed
-			navAgent.set_velocity(new_velocity)
-	move_and_slide()
+			if navAgent.avoidance_enabled:
+				navAgent.set_velocity(new_velocity)
+			move_and_slide()
 
 func is_eaten() -> bool:
 	if hp > 0:
