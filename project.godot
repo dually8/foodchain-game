@@ -45,6 +45,7 @@ Predator="Something that can eat a prey"
 Player="The player character"
 PredatorSpawnPoint="Point from which to spawn predators"
 PreySpawnPoint="Point from which to spawn prey"
+CanvasLayer=""
 
 [input]
 

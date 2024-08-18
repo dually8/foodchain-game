@@ -400,7 +400,8 @@ sources/6 = SubResource("TileSetAtlasSource_lj73f")
 
 [node name="Level01" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["CanvasLayer"]]
+process_mode = 3
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_61lsc")]
 
@@ -427,6 +428,7 @@ current_model = 2
 _camera = NodePath("../PlayerCamera")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("13_kwfen")
 volume_db = -10.0
 autoplay = true

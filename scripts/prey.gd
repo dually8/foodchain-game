@@ -43,6 +43,9 @@ func _set_model() -> void:
 			is_static = false
 
 func _physics_process(_delta: float) -> void:
+	# Fixes the crash when reloading the level
+	if not is_instance_valid(target):
+		return
 	if target and not is_static:
 		var distance_to_player = global_position.distance_to(target.global_position)
 		if distance_to_player < run_distance:

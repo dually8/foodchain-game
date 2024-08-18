@@ -73,8 +73,6 @@ func _on_player_take_damage(new_hp: int) -> void:
 		hp = new_hp
 		print(hp)
 	if hp <= 0:
-		print("ded lol")
-		# TODO - Swap to new predator and update HP/Hunger
 		switch_to_next_predator()
 		reset_stats()
 
@@ -90,8 +88,7 @@ func _update_hunger(did_eat: bool = false) -> void:
 	if hunger > 0:
 		hunger -= hunger_drain
 	else:
-		# TODO - Show game over menu
-		return
+		Globals.open_game_over()
 	GameManager.player_adjust_hunger.emit(hunger)
 
 func _on_body_entered(body: Node2D) -> void:

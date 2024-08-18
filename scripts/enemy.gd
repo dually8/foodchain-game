@@ -34,6 +34,9 @@ func _nav_setup() -> void:
 	ready_to_chase = true
 
 func _physics_process(_delta: float) -> void:
+	# Fixes the crash when reloading the level
+	if not is_instance_valid(target):
+		return
 	if target and ready_to_chase and not is_paused:
 		navAgent.target_position = target.position
 		var direction = global_position.direction_to(navAgent.get_next_path_position())
@@ -47,6 +50,9 @@ func _physics_process(_delta: float) -> void:
 			#move_and_slide()
 
 func _on_timer_timeout() -> void:
+	# Fixes the crash when reloading the level
+	if not is_instance_valid(target):
+		return
 	if target and not is_paused:
 		var distance_to_player = position.distance_to(target.position)
 		if distance_to_player <= attack_distance:
