@@ -71,7 +71,6 @@ func try_attack() -> void:
 func _on_player_take_damage(new_hp: int) -> void:
 	if hp > 0:
 		hp = new_hp
-		print(hp)
 	if hp <= 0:
 		switch_to_next_predator()
 		reset_stats()

@@ -50,7 +50,7 @@ debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yooxs")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

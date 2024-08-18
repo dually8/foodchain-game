@@ -18,7 +18,6 @@ func _ready() -> void:
 	if players.size() > 0:
 		target = players[0] as Player
 	if target:
-		print("found player!")
 		_set_model()
 	call_deferred("_nav_setup")
 

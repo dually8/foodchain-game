@@ -8,11 +8,14 @@ var attack_rate: float = 1.0
 var attack_damage: int = 100
 var ready_to_chase: bool = false
 var is_paused: bool = false
+const footstep_interval: float = 0.5
+var footstep_timer: float = 0.0
 
 @onready var timer: Timer = %Timer
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var navAgent: NavigationAgent2D = %NavigationAgent2D
 @onready var animation: AnimatedSprite2D = $Animation
+@onready var footsteps: AudioStreamPlayer2D = $Footsteps
 
 func _ready() -> void:
 	add_to_group("Predator")
@@ -33,13 +36,21 @@ func _nav_setup() -> void:
 	await get_tree().physics_frame
 	ready_to_chase = true
 
-func _physics_process(_delta: float) -> void:
+func _play_footsteps() -> void:
+	if footstep_timer <= 0.0:
+		footsteps.play()
+		footstep_timer = footstep_interval
+
+func _physics_process(delta: float) -> void:
 	# Fixes the crash when reloading the level
 	if not is_instance_valid(target):
 		return
+	footstep_timer -= delta
 	if target and ready_to_chase and not is_paused:
 		navAgent.target_position = target.position
 		var direction = global_position.direction_to(navAgent.get_next_path_position())
+		if direction != Vector2.ZERO:
+			_play_footsteps()
 		navAgent.set_velocity(direction * move_speed)
 		move_and_slide()
 	#if target:
