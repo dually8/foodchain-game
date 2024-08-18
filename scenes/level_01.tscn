@@ -1,7 +1,8 @@
-[gd_scene load_steps=70 format=4 uid="uid://dc1pymvhu6qrh"]
+[gd_scene load_steps=71 format=4 uid="uid://dc1pymvhu6qrh"]
 
 [ext_resource type="PackedScene" uid="uid://c3dhqlt43oqlx" path="res://scenes/ui.tscn" id="1_61lsc"]
 [ext_resource type="Texture2D" uid="uid://co67i4mpct82g" path="res://assets/imgs/cute fantasy/Tiles/Cliff_Tile.png" id="1_ygy4b"]
+[ext_resource type="Script" path="res://scripts/level_01.gd" id="1_yr8ho"]
 [ext_resource type="PackedScene" uid="uid://bir7v7ch88esi" path="res://ui/instructions.tscn" id="2_mmn61"]
 [ext_resource type="Texture2D" uid="uid://cnp0s4bx6cojd" path="res://assets/imgs/cute fantasy/Tiles/FarmLand_Tile.png" id="2_x0v7g"]
 [ext_resource type="Texture2D" uid="uid://bjisnedsw23na" path="res://assets/imgs/cute fantasy/Tiles/Grass_Middle.png" id="3_bllue"]
@@ -404,6 +405,7 @@ sources/5 = SubResource("TileSetAtlasSource_8bq48")
 sources/6 = SubResource("TileSetAtlasSource_lj73f")
 
 [node name="Level01" type="Node2D"]
+script = ExtResource("1_yr8ho")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["CanvasLayer"]]
 process_mode = 3
@@ -437,13 +439,12 @@ _camera = NodePath("../PlayerCamera")
 process_mode = 3
 stream = ExtResource("13_kwfen")
 volume_db = -10.0
-autoplay = true
 bus = &"Music"
 
 [node name="PredatorSpawners" type="Node" parent="."]
 
 [node name="PredatorSpawner" parent="PredatorSpawners" instance=ExtResource("9_5w70a")]
-position = Vector2(640, 61)
+position = Vector2(623, 137)
 pp_scene = ExtResource("10_kkevy")
 
 [node name="PredatorSpawner2" parent="PredatorSpawners" instance=ExtResource("9_5w70a")]
@@ -472,6 +473,11 @@ spawn_group = "Prey"
 
 [node name="PreySpawner3" parent="PreySpawners" instance=ExtResource("9_5w70a")]
 position = Vector2(544, 368)
+pp_scene = ExtResource("11_q671a")
+spawn_group = "Prey"
+
+[node name="PreySpawner4" parent="PreySpawners" instance=ExtResource("9_5w70a")]
+position = Vector2(674, 235)
 pp_scene = ExtResource("11_q671a")
 spawn_group = "Prey"
 
@@ -577,7 +583,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(130, 234)
 
 [node name="Log2" parent="Vegetation" instance=ExtResource("18_f8eq3")]
-position = Vector2(600, 98)
+position = Vector2(629, 91)
 
 [node name="Log3" parent="Vegetation" instance=ExtResource("18_f8eq3")]
 position = Vector2(624, 389)
