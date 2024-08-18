@@ -99,6 +99,15 @@ pause={
 ]
 }
 
+[layer_names]
+
+2d_navigation/layer_1="BaseMap"
+2d_navigation/layer_2="Obstacles"
+avoidance/layer_1="General"
+avoidance/layer_2="Player"
+avoidance/layer_3="Predator"
+avoidance/layer_4="Prey"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

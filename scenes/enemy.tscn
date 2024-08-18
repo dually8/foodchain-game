@@ -24,10 +24,17 @@ unique_name_in_owner = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-path_desired_distance = 1.0
-target_desired_distance = 1.0
+path_desired_distance = 10.0
 path_max_distance = 10.0
+path_postprocessing = 1
+simplify_path = true
 avoidance_enabled = true
+radius = 20.0
+avoidance_layers = 4
+avoidance_mask = 4
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.113725, 0.188235, 1)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 

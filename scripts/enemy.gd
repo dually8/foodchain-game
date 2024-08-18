@@ -21,7 +21,7 @@ func _ready() -> void:
 	timer.start()
 	attack_cooldown.timeout.connect(_on_cooldown)
 	attack_cooldown.wait_time = attack_rate
-	
+
 	# Find the player in the scene
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	if target and ready_to_chase and not is_paused:
 		navAgent.target_position = target.position
 		var direction = global_position.direction_to(navAgent.get_next_path_position())
-		velocity = direction * move_speed
+		navAgent.set_velocity(direction * move_speed)
 		move_and_slide()
 	#if target:
 		#var distance_to_player = position.distance_to(target.position)

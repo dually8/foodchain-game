@@ -70,3 +70,9 @@ debug_color = Color(0.778542, 0.384272, 0.558789, 0.42)
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gargr")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 50.0
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_layers = 2

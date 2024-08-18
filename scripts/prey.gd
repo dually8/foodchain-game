@@ -9,7 +9,7 @@ class_name Prey
 var target: Player = null
 var run_distance: int = 400
 var move_speed: int = 75
-var hp: int = 3
+var hp: int = 2
 
 func _ready() -> void:
 	add_to_group("Prey")
@@ -20,6 +20,10 @@ func _ready() -> void:
 	if target:
 		print("found player!")
 		_set_model()
+	call_deferred("_nav_setup")
+
+func _nav_setup() -> void:
+	await get_tree().physics_frame
 
 func _set_model() -> void:
 	if target:
@@ -39,17 +43,16 @@ func _set_model() -> void:
 			is_static = false
 
 func _physics_process(_delta: float) -> void:
-	#if target and not is_static and not navAgent.is_navigation_finished():
-		#navAgent.target_position = target.position
-			#var direction = global_position.direction_to(navAgent.get_next_path_position())
-			#velocity = direction * move_speed
-			#move_and_slide()
 	if target and not is_static:
-		var distance_to_player = position.distance_to(target.position)
+		var distance_to_player = global_position.distance_to(target.global_position)
 		if distance_to_player < run_distance:
-			var direction = (target.position - position).normalized() * -1
-			velocity = direction * move_speed
-			move_and_slide()
+			navAgent.target_position = target.global_position * -1.0
+			var direction = global_position.direction_to(
+				navAgent.get_next_path_position()
+			)
+			var new_velocity = direction * move_speed
+			navAgent.set_velocity(new_velocity)
+	move_and_slide()
 
 func is_eaten() -> bool:
 	if hp > 0:
@@ -60,7 +63,6 @@ func is_eaten() -> bool:
 
 func destroy() -> void:
 	queue_free()
-
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
