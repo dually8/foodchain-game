@@ -32,9 +32,8 @@ avoidance_enabled = true
 radius = 20.0
 avoidance_layers = 4
 avoidance_mask = 4
-debug_enabled = true
 debug_use_custom = true
-debug_path_custom_color = Color(1, 0.113725, 0.188235, 1)
+debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 

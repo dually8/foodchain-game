@@ -30,7 +30,6 @@ simplify_path = true
 avoidance_enabled = true
 radius = 50.0
 avoidance_mask = 3
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.260006, 0.200835, 1)
 
