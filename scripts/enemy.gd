@@ -19,6 +19,7 @@ var facing_direction: Globals.FacingDirection = Globals.FacingDirection.SOUTH
 @onready var animation: AnimatedSprite2D = $Animation
 @onready var footsteps: AudioStreamPlayer2D = $Footsteps
 @onready var attackRange: Area2D = $AttackRange
+@onready var chomp: AudioStreamPlayer2D = $Chomp
 
 func _ready() -> void:
 	add_to_group("Predator")
@@ -67,6 +68,7 @@ func _on_attack_timer_timeout() -> void:
 	if not is_instance_valid(target):
 		return
 	if target and can_attack and is_in_range:
+		chomp.play()
 		GameManager.player_adjust_hp.emit(target.hp - attack_damage)
 		can_attack = false
 		attack_cooldown.start()

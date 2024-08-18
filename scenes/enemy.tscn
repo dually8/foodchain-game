@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr8so52kl8grt"]
+[gd_scene load_steps=13 format=3 uid="uid://dr8so52kl8grt"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dchky"]
 [ext_resource type="PackedScene" uid="uid://2qxs1mytv3pm" path="res://scenes/shared_animation.tscn" id="2_e3rvq"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://08bbnwikhca4" path="res://assets/sound/Gravel Hit Small C.wav" id="5_ob1wu"]
 [ext_resource type="AudioStream" uid="uid://co5osrg765rp4" path="res://assets/sound/Gravel Hit Small D.wav" id="6_u5a38"]
 [ext_resource type="AudioStream" uid="uid://cn0nw33jsary2" path="res://assets/sound/Gravel Hit Small E.wav" id="7_sey1v"]
+[ext_resource type="AudioStream" uid="uid://c7j26twbsjcev" path="res://assets/sound/chomp.ogg" id="8_aopaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejjmr"]
 radius = 4.0
@@ -19,6 +20,11 @@ stream_1/stream = ExtResource("4_5b1l0")
 stream_2/stream = ExtResource("5_ob1wu")
 stream_3/stream = ExtResource("6_u5a38")
 stream_4/stream = ExtResource("7_sey1v")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a82wm"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_aopaj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdxjf"]
 radius = 20.0
@@ -53,6 +59,11 @@ debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yooxs")
+bus = &"SFX"
+
+[node name="Chomp" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_a82wm")
+pitch_scale = 0.7
 bus = &"SFX"
 
 [node name="AttackRange" type="Area2D" parent="."]
