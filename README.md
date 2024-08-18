@@ -10,15 +10,18 @@ For the GMTK Game Jam 2024 https://itch.io/jam/gmtk-2024
 
 ## TODOS
 
-- [ ] Make food hierarchy
+- [x] Make food hierarchy
     1. Plant
     2. Skunk
     3. Wolf
     4. Bear
     5. Human
-- [ ] Create HP system
-- [ ] Create hunger system
-- [ ] ???
+- [x] Create HP system
+- [x] Create hunger system
+- [ ] Instructions screen (?)
+- [ ] How do we build and share?
+- [ ] When human, everything is predator, except for carrot
+- [ ] _IF_ we have time, make carrots not run away LOL
 
 ## Credits
 
