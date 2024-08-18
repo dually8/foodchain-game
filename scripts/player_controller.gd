@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var move_speed: int = 250
+@export var move_speed: int = 125
 @export var current_model: Globals.Foodchain
 @export var _camera: Camera2D
 @onready var hunger_timer: Timer = $HungerTimer
@@ -10,12 +10,12 @@ class_name Player
 @onready var collision: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var footsteps: AudioStreamPlayer = $Footsteps
 
-var attack_damage: int = 100
-var hp: int = 300
-var max_hp: int = 300
-var hunger: int = 500
-var max_hunger: int = 500
-var hunger_drain: int = 25
+var attack_damage: int = 1
+var hp: int = 3
+var max_hp: int = 3
+var hunger: int = 10
+var max_hunger: int = 10
+var hunger_drain: int = 1
 var available_prey: Array[Prey] = []
 const footstep_interval: float = 0.5
 var footstep_timer: float = 0.0
@@ -84,7 +84,7 @@ func reset_stats() -> void:
 	hp = max_hp
 	hunger = max_hunger
 	GameManager.player_adjust_hunger.emit(hunger)
-	GameManager.player_adjust_hp.emit(max_hp)
+	GameManager.player_adjust_hp.emit(hp)
 
 func _update_hunger(did_eat: bool = false) -> void:
 	if current_model == Globals.Foodchain.Carrot:
