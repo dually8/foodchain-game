@@ -88,6 +88,7 @@ func _update_hunger(did_eat: bool = false) -> void:
 	if hunger > 0:
 		hunger -= hunger_drain
 	else:
+		GameManager.reset_predators_and_prey()
 		Globals.open_game_over()
 	GameManager.player_adjust_hunger.emit(hunger)
 

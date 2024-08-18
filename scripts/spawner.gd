@@ -24,11 +24,7 @@ func _ready() -> void:
 # and start the timer if the player cannot see the spawner
 func _init_timer() -> void:
 	timer.timeout.connect(_on_spawn_timer_timeout)
-	get_tree().create_timer(1.0).timeout.connect(
-		func ():
-			if not notifier.is_on_screen():
-				timer.start()
-	)
+	timer.start()
 
 # Stop the spawner if the area IS visible
 func _on_screen_entered() -> void:
