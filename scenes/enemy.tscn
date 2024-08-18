@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr8so52kl8grt"]
+[gd_scene load_steps=10 format=3 uid="uid://dr8so52kl8grt"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dchky"]
 [ext_resource type="PackedScene" uid="uid://2qxs1mytv3pm" path="res://scenes/shared_animation.tscn" id="2_e3rvq"]
+[ext_resource type="AudioStream" uid="uid://bu4ql8utw88hm" path="res://assets/sound/Gravel Hit Small A.wav" id="3_bd7wx"]
+[ext_resource type="AudioStream" uid="uid://by7gl6q1humlp" path="res://assets/sound/Gravel Hit Small B.wav" id="4_5b1l0"]
+[ext_resource type="AudioStream" uid="uid://08bbnwikhca4" path="res://assets/sound/Gravel Hit Small C.wav" id="5_ob1wu"]
+[ext_resource type="AudioStream" uid="uid://co5osrg765rp4" path="res://assets/sound/Gravel Hit Small D.wav" id="6_u5a38"]
+[ext_resource type="AudioStream" uid="uid://cn0nw33jsary2" path="res://assets/sound/Gravel Hit Small E.wav" id="7_sey1v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejjmr"]
 radius = 4.0
 height = 16.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yooxs"]
+streams_count = 5
+stream_0/stream = ExtResource("3_bd7wx")
+stream_1/stream = ExtResource("4_5b1l0")
+stream_2/stream = ExtResource("5_ob1wu")
+stream_3/stream = ExtResource("6_u5a38")
+stream_4/stream = ExtResource("7_sey1v")
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_dchky")
@@ -36,5 +49,8 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
 
 [node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yooxs")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

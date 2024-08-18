@@ -17,3 +17,6 @@ position = Vector2(-1, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CapsuleShape2D_yid0w")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="StaticBody2D"]
+radius = 21.0

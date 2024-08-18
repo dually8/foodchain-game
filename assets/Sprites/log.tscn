@@ -19,3 +19,6 @@ region_rect = Rect2(50, 209, 45, 21)
 position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3bcpg")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="StaticBody2D"]
+radius = 23.0

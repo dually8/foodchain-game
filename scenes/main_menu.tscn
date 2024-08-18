@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://rsdkdhw8vo4x"]
+[gd_scene load_steps=14 format=3 uid="uid://rsdkdhw8vo4x"]
 
 [ext_resource type="Texture2D" uid="uid://dfqy2yd0vuikg" path="res://icon.svg" id="1_8sb8y"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_iiyhn"]
 [ext_resource type="Theme" uid="uid://cjpa4v7k8pwke" path="res://ui/default_theme.tres" id="1_ponpi"]
+[ext_resource type="Texture2D" uid="uid://cl6ptruncpa5k" path="res://assets/imgs/cute fantasy/Player/Player.png" id="4_ag5we"]
+[ext_resource type="Texture2D" uid="uid://cv1tyjasln5f0" path="res://assets/imgs/animal pack/Stinky Skunk/StinkySkunkIdleSide.png" id="5_mw4mm"]
+[ext_resource type="Texture2D" uid="uid://bcctg1fgagmbl" path="res://assets/imgs/animal pack/Timber Wolf/TimberWolfIdleSide.png" id="6_ixkl0"]
+[ext_resource type="Texture2D" uid="uid://dq5jn3rct8y6w" path="res://assets/imgs/animal pack/Gentle Panda/GentlePandaIdleSide.png" id="7_t8w05"]
+[ext_resource type="Texture2D" uid="uid://b8hji7flrpluq" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0017.png" id="8_w65jt"]
+[ext_resource type="Texture2D" uid="uid://ies7of7k6b0q" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0120.png" id="9_totnj"]
+[ext_resource type="Texture2D" uid="uid://dxpy3xf5rokqr" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0197.png" id="10_qyhvh"]
+[ext_resource type="Texture2D" uid="uid://l7706tawfxrc" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0086.png" id="11_n64gi"]
+[ext_resource type="Texture2D" uid="uid://ciq715qov40bs" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0121.png" id="12_3xvh3"]
+[ext_resource type="Texture2D" uid="uid://b11gwcea4eanp" path="res://assets/imgs/Input Prompts Pixel 16×/Tiles/tile_0122.png" id="13_fu4sh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,7 +28,8 @@ script = ExtResource("1_iiyhn")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 324.0
+offset_right = -1111.0
+offset_bottom = 152.0
 grow_horizontal = 2
 alignment = 1
 
@@ -101,6 +112,135 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 text = "Version 0.0.0"
 horizontal_alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 63.0
+offset_right = 842.0
+offset_bottom = 163.0
+columns = 4
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/ColorRect"]
+position = Vector2(49, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("4_ag5we")
+region_enabled = true
+region_rect = Rect2(9, 5, 13, 20)
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="GridContainer/ColorRect2"]
+z_index = 1
+position = Vector2(258, 52)
+scale = Vector2(4, 4)
+texture = ExtResource("5_mw4mm")
+region_enabled = true
+region_rect = Rect2(0, 19, 16, 13)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="GridContainer/ColorRect3"]
+position = Vector2(49, 53)
+scale = Vector2(4, 4)
+texture = ExtResource("6_ixkl0")
+region_enabled = true
+region_rect = Rect2(0, 0, 15.9989, 16)
+
+[node name="ColorRect4" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="GridContainer/ColorRect4"]
+position = Vector2(-158, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("7_t8w05")
+region_enabled = true
+region_rect = Rect2(0, 7, 31.8488, 25)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 181.0
+offset_right = 819.0
+offset_bottom = 305.0
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 72
+text = "Food Chain"
+horizontal_alignment = 1
+
+[node name="ESC" type="Sprite2D" parent="."]
+position = Vector2(296, 604)
+scale = Vector2(3, 3)
+texture = ExtResource("8_w65jt")
+
+[node name="A" type="Sprite2D" parent="."]
+position = Vector2(149, 604)
+scale = Vector2(3, 3)
+texture = ExtResource("9_totnj")
+
+[node name="Period" type="Sprite2D" parent="."]
+position = Vector2(380, 604)
+scale = Vector2(3, 3)
+texture = ExtResource("10_qyhvh")
+
+[node name="W" type="Sprite2D" parent="."]
+position = Vector2(188, 564)
+scale = Vector2(3, 3)
+texture = ExtResource("11_n64gi")
+
+[node name="S" type="Sprite2D" parent="."]
+position = Vector2(188, 604)
+scale = Vector2(3, 3)
+texture = ExtResource("12_3xvh3")
+
+[node name="D" type="Sprite2D" parent="."]
+position = Vector2(227, 604)
+scale = Vector2(3, 3)
+texture = ExtResource("13_fu4sh")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 503.0
+offset_right = 228.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 37
+text = "Move
+"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 503.0
+offset_right = 340.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 37
+text = "Pause"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 506.0
+offset_right = 406.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 37
+text = "Eat"
 
 [connection signal="pressed" from="ButtonContainer/HBoxContainer/GridContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonContainer/HBoxContainer/GridContainer/Settings" to="." method="_on_settings_pressed"]
