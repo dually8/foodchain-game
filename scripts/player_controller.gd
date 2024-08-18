@@ -67,11 +67,13 @@ func try_attack() -> void:
 	if available_prey.size() > 0:
 		var first_prey = available_prey[0]
 		AudioManager.play_chomp()
+		show_prey_hit_indicator(first_prey)
 		if first_prey.is_eaten():
 			_update_hunger(true)
 			GameManager.adjust_score.emit(10)
 
 func _on_player_take_damage(new_hp: int) -> void:
+	show_hit_indicator()
 	if hp > 0:
 		hp = new_hp
 	if hp <= 0:
@@ -186,3 +188,14 @@ func set_collision() -> void:
 			$SmallCollision.disabled = false
 			$BearCollision.disabled = true
 			$HumanCollision.disabled = true
+
+func show_hit_indicator() -> void:
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE
+
+func show_prey_hit_indicator(prey: Prey) -> void:
+	prey.animation.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	if is_instance_valid(prey):
+		prey.animation.modulate = Color.WHITE

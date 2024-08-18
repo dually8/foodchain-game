@@ -56,6 +56,7 @@ disabled = true
 [node name="HungerTimer" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ims5k")
@@ -65,6 +66,7 @@ debug_color = Color(0.778542, 0.384272, 0.558789, 0.42)
 stream = SubResource("AudioStreamRandomizer_gargr")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+visible = false
 radius = 50.0
 affect_navigation_mesh = true
 carve_navigation_mesh = true
