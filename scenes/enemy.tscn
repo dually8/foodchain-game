@@ -34,9 +34,6 @@ position = Vector2(0, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ejjmr")
 
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 path_desired_distance = 10.0
@@ -49,6 +46,8 @@ avoidance_layers = 4
 avoidance_mask = 4
 debug_use_custom = true
 debug_path_custom_color = Color(0.842189, 0.821239, 0, 1)
+
+[node name="AttackTimer" type="Timer" parent="."]
 
 [node name="AttackCooldown" type="Timer" parent="."]
 

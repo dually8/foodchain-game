@@ -9,9 +9,10 @@ var attack_damage: int = 100
 var ready_to_chase: bool = false
 const footstep_interval: float = 0.5
 var footstep_timer: float = 0.0
-var can_attack: bool = false
+var is_in_range: bool = false
+var can_attack: bool = true
 
-@onready var timer: Timer = %Timer
+@onready var attackTimer: Timer = $AttackTimer
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var navAgent: NavigationAgent2D = %NavigationAgent2D
 @onready var animation: AnimatedSprite2D = $Animation
@@ -20,11 +21,14 @@ var can_attack: bool = false
 
 func _ready() -> void:
 	add_to_group("Predator")
-	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = attack_rate
-	timer.start()
-	attack_cooldown.timeout.connect(_on_cooldown)
+	attackTimer.timeout.connect(_on_attack_timer_timeout)
+	attackTimer.wait_time = attack_rate
+	attackTimer.start()
+	attack_cooldown.timeout.connect(_on_attack_cooldown)
 	attack_cooldown.wait_time = attack_rate
+	# Make this one shot so that it does not continually loop
+	# and we can restart it on demand
+	attack_cooldown.one_shot = true
 
 	# Find the player in the scene
 	var players = get_tree().get_nodes_in_group("Player")
@@ -55,16 +59,16 @@ func _physics_process(delta: float) -> void:
 		navAgent.set_velocity(direction * move_speed)
 		move_and_slide()
 
-func _on_timer_timeout() -> void:
+func _on_attack_timer_timeout() -> void:
 	# Fixes the crash when reloading the level
 	if not is_instance_valid(target):
 		return
-	if target and can_attack:
+	if target and can_attack and is_in_range:
 		GameManager.player_adjust_hp.emit(target.hp - attack_damage)
 		can_attack = false
 		attack_cooldown.start()
 
-func _on_cooldown() -> void:
+func _on_attack_cooldown() -> void:
 	can_attack = true
 
 func set_model() -> void:
@@ -104,9 +108,9 @@ func get_random_animation() -> String:
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body is Player:
-		can_attack = true
+		is_in_range = true
 
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	if body is Player:
-		can_attack = false
+		is_in_range = false
