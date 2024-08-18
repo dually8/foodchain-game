@@ -424,7 +424,7 @@ editor_draw_limits = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("8_n8bc8")]
 position = Vector2(224, 232)
-current_model = 2
+current_model = 1
 _camera = NodePath("../PlayerCamera")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
