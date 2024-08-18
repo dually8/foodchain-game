@@ -7,6 +7,8 @@ signal settings_menu_closed
 @onready var music_bus_id = AudioServer.get_bus_index("Music")
 @onready var sfx_bus_id = AudioServer.get_bus_index("SFX")
 @onready var user_settings: UserSettings = null
+@onready var resolutionLabel: Label = %ResolutionLabel
+@onready var resolutionDropdown: OptionButton = %ResolutionDropdown
 
 var available_resolutions: Array[Vector2i] = [
 	Vector2i(1280, 720),
@@ -14,6 +16,11 @@ var available_resolutions: Array[Vector2i] = [
 ]
 
 func _ready() -> void:
+	# Disable resolution picker if in browser
+	if GameManager.is_running_in_browser:
+		resolutionLabel.visible = false
+		resolutionDropdown.disabled = true
+		resolutionDropdown.visible = false
 	user_settings = UserSettings.load_or_create()
 	_load_settings()
 

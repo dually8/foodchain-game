@@ -127,6 +127,7 @@ focus_neighbor_top = NodePath("../SFXVolumeSlider")
 focus_neighbor_bottom = NodePath("../ResolutionDropdown")
 
 [node name="ResolutionLabel" type="Label" parent="BackgroundOverlay/MenuOverlay/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Resolution"
 

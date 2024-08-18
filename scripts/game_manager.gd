@@ -5,8 +5,11 @@ signal player_adjust_hunger(value: int)
 signal adjust_score(value: int)
 
 var score: int = 0
+var is_running_in_browser: bool = false
 
 func _ready() -> void:
+	if OS.get_name() == "Web":
+		is_running_in_browser = true
 	_reset_score()
 	self.adjust_score.connect(_on_score_update)
 
