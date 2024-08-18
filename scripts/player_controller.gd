@@ -57,6 +57,7 @@ func try_attack() -> void:
 		AudioManager.play_chomp()
 		if first_prey.is_eaten():
 			_update_hunger(true)
+			GameManager.adjust_score.emit(10)
 
 func _on_player_take_damage(new_hp: int) -> void:
 	if hp > 0:
