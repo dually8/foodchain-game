@@ -1,36 +1,45 @@
-# Foodchain game
+# Food Chain game
 
-For the GMTK Game Jam 2024 https://itch.io/jam/gmtk-2024
+> For the GMTK Game Jam 2024 https://itch.io/jam/gmtk-2024
 
-## Getting Started
+You are part of nature's food chain. How long can you survive while eating and trying not to get eaten?
 
-1. Download Godot 4.3
-2. Open the project.godot file in it
+## Controls
+
+- Movement: `W`,`A`,`S`,`D` for Up, Left, Down, Right respectively
+- Eat: `.`
+- Pause: `ESC`
+
+We have experimental controller support
+
+- Movement: `D-PAD`
+- Eat
+  - Xbox: `A`
+  - PlayStation: `X`
+  - Switch: `B`
+- Pause
+  - Xbox: `GUIDE`
+  - PlayStation: `OPTIONS`
+  - Switch: `+`
+
+## Usage
+
+### Browser
+
+1. Go to the [game page on itch.io](https://dually8.itch.io/foodchain)
+2. Click "Run game"
+
+### Windows
+
+1. Download the release
+2. Run `foodchain.exe`
+    - You may run into some windows security thing. That's because I can't sign the exe, so please excuse me for that. If you don't feel comfortable running the exe, feel free to try the [browser version](#browser)
+
+## Building and running the project
+
+1. Download [Godot 4.3](https://godotengine.org/)
+2. Open the `project.godot` file in it
 3. Run it!
-
-## TODOS
-
-- [x] Make food hierarchy
-    1. Plant
-    2. Skunk
-    3. Wolf
-    4. Bear
-    5. Human
-- [x] Create HP system
-- [x] Create hunger system
-- [x] Instructions screen (?)
-- [x] When human, everything is predator, except for carrot
-- [x] _IF_ we have time, make carrots not run away LOL
-- [x] enemies clip through static sprites
-- [x] Adjusted Hunger Drain
-- [x] Added audio stream player 2d to enemy
-- [x] Added new audio files for enemy
-- [x] Updated main menu
-- [x] Added controls information
-- [ ] Human never dies
-- [ ] Added avoidance to static sprites, might need to check pathing again.
-- [ ] We need to seriously remove some of these unused files. It's slowing the game down.
-- [ ] **How do we build and share?**
 
 ## Credits
 
@@ -54,3 +63,5 @@ For the GMTK Game Jam 2024 https://itch.io/jam/gmtk-2024
   - Art
 - [kenney](https://www.kenney.nl/)
   - Input icons
+- [dan-velasquez-art](https://dan-velasquez-art.itch.io/)
+  - UI Art
