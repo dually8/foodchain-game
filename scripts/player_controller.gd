@@ -3,6 +3,7 @@ class_name Player
 
 @export var move_speed: int = 250
 @export var current_model: Globals.Foodchain
+@export var _camera: Camera2D
 @onready var hunger_timer: Timer = $HungerTimer
 @onready var area2d: Area2D = $Area2D
 @onready var sprite: AnimatedSprite2D = $Animation
@@ -28,6 +29,14 @@ func _ready() -> void:
 	area2d.body_entered.connect(_on_body_entered)
 	area2d.body_exited.connect(_on_body_exited)
 	set_model(current_model)
+	if not _camera:
+		push_error("NEED TO ATTACH A CAMERA TO THE PLAYER!!!")
+	else:
+		_camera.enabled = true
+		_camera.make_current()
+
+func _process(_delta: float) -> void:
+	_camera.position = position
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(0, 0)

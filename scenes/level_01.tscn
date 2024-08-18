@@ -409,9 +409,22 @@ tile_map_data = PackedByteArray("AAAAAAAABgAAAAMAAAAAAAEABgACAAEAAAAAAAIABgACAAE
 tile_set = SubResource("TileSet_7d7dg")
 collision_visibility_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("8_n8bc8")]
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 720
+limit_bottom = 495
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("8_n8bc8")]
 position = Vector2(224, 232)
-current_model = 1
+current_model = 2
+_camera = NodePath("../PlayerCamera")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_kwfen")

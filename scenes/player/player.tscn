@@ -53,13 +53,6 @@ position = Vector2(-0.5, -2)
 shape = SubResource("CapsuleShape2D_uwsp7")
 disabled = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="HungerTimer" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
