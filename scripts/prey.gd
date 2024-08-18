@@ -27,9 +27,6 @@ func _nav_setup() -> void:
 func _set_model() -> void:
 	if target:
 		match target.current_model:
-			Globals.Foodchain.Skunk:
-				animation.play("carrot")
-				is_static = true
 			Globals.Foodchain.Wolf:
 				animation.play("skunk")
 				is_static = false
@@ -37,6 +34,9 @@ func _set_model() -> void:
 				animation.play("wolf")
 				is_static = false
 			Globals.Foodchain.Human:
+				animation.play("carrot")
+				is_static = true
+			_:
 				animation.play("carrot")
 				is_static = true
 		if is_static:
