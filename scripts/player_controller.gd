@@ -39,6 +39,9 @@ func _process(_delta: float) -> void:
 	_camera.position = position
 
 func _physics_process(delta: float) -> void:
+	if current_model == Globals.Foodchain.Carrot:
+		# You can't move as a carrot!
+		return
 	velocity = Vector2(0, 0)
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	footstep_timer -= delta
@@ -125,6 +128,9 @@ func switch_to_next_predator() -> void:
 func set_model(model: Globals.Foodchain) -> void:
 	current_model = model
 	match model:
+		Globals.Foodchain.Carrot:
+			# Set animation to carrot
+			set_animation("carrot")
 		Globals.Foodchain.Skunk:
 			# Set animation to skunk
 			set_animation("skunk")

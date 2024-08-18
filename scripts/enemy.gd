@@ -75,6 +75,8 @@ func set_model() -> void:
 	if not target:
 		return
 	match target.current_model:
+		Globals.Foodchain.Carrot:
+			animation.play("skunk")
 		Globals.Foodchain.Skunk:
 			animation.play("wolf")
 		Globals.Foodchain.Wolf:
