@@ -13,6 +13,13 @@ enum Foodchain {
 	Human
 }
 
+enum FacingDirection {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}
+
 func open_settings_menu():
 	if not settings_menu:
 		settings_menu = settings_menu_scene.instantiate()
