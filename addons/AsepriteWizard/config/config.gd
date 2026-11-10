@@ -13,7 +13,6 @@ const _DEFAULT_ONLY_VISIBLE_LAYERS = 'aseprite/animation/layers/only_include_vis
 const _DEFAULT_LOOP_EX_PREFIX = '_'
 const _LOOP_ENABLED = 'aseprite/animation/loop/enabled'
 const _LOOP_EXCEPTION_PREFIX = 'aseprite/animation/loop/exception_prefix'
-const _USE_METADATA = 'aseprite/animation/storage/use_metadata'
 
 # cleanup
 const _REMOVE_SOURCE_FILES_KEY = 'aseprite/import/cleanup/remove_json_file'
@@ -24,26 +23,21 @@ const _IMPORTER_ENABLE_KEY = 'aseprite/import/import_plugin/enable_automatic_imp
 const _DEFAULT_IMPORTER_KEY = 'aseprite/import/import_plugin/default_automatic_importer'
 
 const IMPORTER_SPRITEFRAMES_NAME = "SpriteFrames"
+const IMPORTER_SPRITEFRAMES_SPLIT_NAME = "SpriteFrames (Split By Layer)"
 const IMPORTER_NOOP_NAME = "No Import"
 const IMPORTER_TILESET_TEXTURE_NAME = "Tileset Texture"
 const IMPORTER_STATIC_TEXTURE_NAME = "Static Texture"
+const IMPORTER_STATIC_TEXTURE_SPLIT_NAME = "Static Texture (Split By Layer)"
+
+const _IMPORTER_GENERATE_BAKE_FILE_KEY = 'aseprite/import/import_plugin/generate_bake_files'
 
 # wizard history
 const _WIZARD_HISTORY = "wizard_history"
 const _HISTORY_MAX_ENTRIES = 'aseprite/wizard/history/max_history_entries'
 const _HISTORY_DEFAULT_MAX_ENTRIES = 100
 
-## DEPRECATED (v7.4.0): remove in a next major version
-const _HISTORY_CONFIG_FILE_CFG_KEY = 'aseprite/wizard/history/cache_file_path'
-## DEPRECATED (v7.4.0): remove in a next major version
-const _DEFAULT_HISTORY_CONFIG_FILE_PATH = 'res://.aseprite_wizard_history'
-
-
 # SpriteFrames import last config
 const _STANDALONE_SPRITEFRAMES_LAST_IMPORT_CFG = "standalone_sf_last_import_cfg"
-
-# export
-const _EXPORTER_ENABLE_KEY = 'aseprite/animation/storage/enable_metadata_removal_on_export'
 
 var _editor_settings: EditorSettings = EditorInterface.get_editor_settings()
 
@@ -61,9 +55,14 @@ func default_command() -> String:
 			return 'aseprite'
 
 
-func is_command_or_control_pressed() -> String:
+func get_command() -> String:
 	var command = _editor_settings.get(_COMMAND_KEY) if _editor_settings.has_setting(_COMMAND_KEY) else ""
 	return command if command != "" else default_command()
+
+
+func set_command(command: String) -> void:
+	_editor_settings.set_setting(_COMMAND_KEY, command)
+
 
 
 #######################################################
@@ -79,8 +78,8 @@ func get_default_importer() -> String:
 	return _get_project_setting(_DEFAULT_IMPORTER_KEY, IMPORTER_SPRITEFRAMES_NAME if is_importer_enabled() else IMPORTER_NOOP_NAME)
 
 
-func is_exporter_enabled() -> bool:
-	return _get_project_setting(_EXPORTER_ENABLE_KEY, true)
+func should_generate_bake_files() -> bool:
+	return _get_project_setting(_IMPORTER_GENERATE_BAKE_FILE_KEY, false)
 
 
 func should_remove_source_files() -> bool:
@@ -93,9 +92,6 @@ func is_default_animation_loop_enabled() -> bool:
 
 func get_animation_loop_exception_prefix() -> String:
 	return _get_project_setting(_LOOP_EXCEPTION_PREFIX, _DEFAULT_LOOP_EX_PREFIX)
-
-func is_use_metadata_enabled() -> bool:
-	return _get_project_setting(_USE_METADATA, true)
 
 
 func get_default_exclusion_pattern() -> String:
@@ -114,25 +110,6 @@ func get_import_history() -> Array:
 	return get_plugin_metadata(_WIZARD_HISTORY, [])
 
 
-func get_old_import_history() -> Array:
-	var history = []
-	var history_path := _get_history_file_path()
-
-	if not FileAccess.file_exists(history_path):
-		return history
-
-	var file_object = FileAccess.open(history_path, FileAccess.READ)
-
-	while not file_object.eof_reached():
-		var line = file_object.get_line()
-		if line:
-			var test_json_conv = JSON.new()
-			test_json_conv.parse(line)
-			history.push_back(test_json_conv.get_data())
-
-	return history
-
-
 func is_set_visible_track_automatically_enabled() -> bool:
 	return _get_project_setting(_SET_VISIBLE_TRACK_AUTOMATICALLY, false)
 
@@ -140,21 +117,6 @@ func is_set_visible_track_automatically_enabled() -> bool:
 func save_import_history(history: Array):
 	set_plugin_metadata(_WIZARD_HISTORY, history)
 
-
-## DEPRECATED
-func _get_history_file_path() -> String:
-	return _get_project_setting(_HISTORY_CONFIG_FILE_CFG_KEY, _DEFAULT_HISTORY_CONFIG_FILE_PATH)
-
-
-## used for old history migration. Should be removed together with the history cleanup
-func has_old_history() -> bool:
-	return ProjectSettings.has_setting(_HISTORY_CONFIG_FILE_CFG_KEY) or FileAccess.file_exists(_DEFAULT_HISTORY_CONFIG_FILE_PATH)
-
-## used for old history migration. Should be removed together with the history cleanup
-func remove_old_history_setting() -> void:
-	DirAccess.remove_absolute(_get_history_file_path())
-	if ProjectSettings.has_setting(_HISTORY_CONFIG_FILE_CFG_KEY):
-		ProjectSettings.clear(_HISTORY_CONFIG_FILE_CFG_KEY)
 
 #=========================================================
 # IMPORT CONFIGS
@@ -188,7 +150,6 @@ func initialize_project_settings():
 	_initialize_project_cfg(_DEFAULT_ONLY_VISIBLE_LAYERS, false, TYPE_BOOL)
 	_initialize_project_cfg(_LOOP_ENABLED, true, TYPE_BOOL)
 	_initialize_project_cfg(_LOOP_EXCEPTION_PREFIX, _DEFAULT_LOOP_EX_PREFIX, TYPE_STRING)
-	_initialize_project_cfg(_USE_METADATA, true, TYPE_BOOL)
 
 	_initialize_project_cfg(_REMOVE_SOURCE_FILES_KEY, true, TYPE_BOOL)
 	_initialize_project_cfg(
@@ -196,13 +157,17 @@ func initialize_project_settings():
 		IMPORTER_SPRITEFRAMES_NAME if is_importer_enabled() else IMPORTER_NOOP_NAME,
 		TYPE_STRING,
 		PROPERTY_HINT_ENUM,
-		"%s,%s,%s,%s" % [IMPORTER_NOOP_NAME, IMPORTER_SPRITEFRAMES_NAME, IMPORTER_TILESET_TEXTURE_NAME, IMPORTER_STATIC_TEXTURE_NAME]
+		",".join([
+			IMPORTER_NOOP_NAME,
+			IMPORTER_SPRITEFRAMES_NAME,
+			IMPORTER_SPRITEFRAMES_SPLIT_NAME,
+			IMPORTER_TILESET_TEXTURE_NAME,
+			IMPORTER_STATIC_TEXTURE_NAME,
+			IMPORTER_STATIC_TEXTURE_SPLIT_NAME
+		])
 	)
+	_initialize_project_cfg(_IMPORTER_GENERATE_BAKE_FILE_KEY, false, TYPE_BOOL)
 
-	_initialize_project_cfg(_EXPORTER_ENABLE_KEY, true, TYPE_BOOL)
-
-	# TODO remove (history max entries)
-	#_initialize_project_cfg(_HISTORY_CONFIG_FILE_CFG_KEY, _DEFAULT_HISTORY_CONFIG_FILE_PATH, TYPE_STRING, PROPERTY_HINT_GLOBAL_FILE)
 	_initialize_project_cfg(_HISTORY_MAX_ENTRIES, _HISTORY_DEFAULT_MAX_ENTRIES, TYPE_INT)
 
 	_initialize_project_cfg(_SET_VISIBLE_TRACK_AUTOMATICALLY, false, TYPE_BOOL)
@@ -217,13 +182,12 @@ func clear_project_settings():
 		_DEFAULT_EXCLUSION_PATTERN_KEY,
 		_LOOP_ENABLED,
 		_LOOP_EXCEPTION_PREFIX,
-		_USE_METADATA,
 		_REMOVE_SOURCE_FILES_KEY,
 		_DEFAULT_IMPORTER_KEY,
-		_EXPORTER_ENABLE_KEY,
 		_HISTORY_MAX_ENTRIES,
 		_SET_VISIBLE_TRACK_AUTOMATICALLY,
 		_DEFAULT_ONLY_VISIBLE_LAYERS,
+		_IMPORTER_GENERATE_BAKE_FILE_KEY,
 	]
 	for key in _all_settings:
 		ProjectSettings.clear(key)

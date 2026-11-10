@@ -37,9 +37,12 @@ We have experimental controller support
 
 ## Building and running the project
 
-1. Download [Godot 4.3](https://godotengine.org/)
+1. Download [Godot 4.7.2](https://godotengine.org/)
 2. Open the `project.godot` file in it
 3. Run it!
+
+See [engine and addon maintenance](docs/dependencies.md) for pinned versions,
+Aseprite setup, and export checks.
 
 ## Credits
 

@@ -18,6 +18,7 @@ enum {
 ##    export_mode (FILE_EXPORT_MODE, LAYERS_EXPORT_MODE) default: FILE_EXPORT_MODE
 ##    exception_pattern (string, optional)
 ##    only_visible_layers (boolean, optional)
+##    scale (string, optional)
 ##
 ## Return:
 ##  Array
@@ -55,6 +56,7 @@ func generate_aseprite_files(source_file: String, options: Dictionary):
 ##    layer (string, optional)
 ##    exception_pattern (string, optional)
 ##    only_visible_layers (boolean, optional)
+##    scale (string, optional)
 ##
 ## Return:
 ##    Dictionary
@@ -69,10 +71,13 @@ func generate_aseprite_file(source_file: String, options: Dictionary) -> Diction
 
 	var output
 
-	if options.get("layer", "") == "":
-		output = _aseprite.export_file(source_file, options.output_folder, options)
+	if options.get("layer") != null and options.get("layer") != "":
+		output = _aseprite.export_file_with_layers(source_file, [options.layer], options.output_folder, options)
+	elif options.get("layers", []).size() > 0:
+		output = _aseprite.export_file_with_layers(source_file, options.layers, options.output_folder, options)
 	else:
-		output = _aseprite.export_layer(source_file, options.layer, options.output_folder, options)
+		output = _aseprite.export_file(source_file, options.output_folder, options)
+
 
 	if output.is_empty():
 		return result_code.error(result_code.ERR_ASEPRITE_EXPORT_FAILED)
@@ -141,3 +146,7 @@ func load_json_content(source_file: String) -> Dictionary:
 		return result_code.error(result_code.ERR_INVALID_ASEPRITE_SPRITESHEET)
 
 	return result_code.result(content)
+
+
+func is_aseprite_command_working() -> bool:
+	return _aseprite.test_command()
